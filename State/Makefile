@@ -3,8 +3,8 @@ OBJPATH = ../obj
 INCLUDEPATH = ../lib/include
 CC = gcc
 
-EXEC = $(EXECPATH)/Observer
-OBJS = $(OBJPATH)/observed.o $(OBJPATH)/observer.o $(OBJPATH)/Observer_main.o
+EXEC = $(EXECPATH)/State
+OBJS = $(OBJPATH)/observed.o $(OBJPATH)/observer.o $(OBJPATH)/main.o
 
 all: $(OBJS) $(EXEC)
 
@@ -17,7 +17,7 @@ $(OBJPATH)/observed.o: observed.c
 $(OBJPATH)/observer.o: observer.c
 	$(CC) -g -c $< -I $(INCLUDEPATH) -o $@
 
-$(OBJPATH)/Observer_main.o: main.c
+$(OBJPATH)/main.o: main.c
 	$(CC) -g -c $< -I $(INCLUDEPATH) -o $@
 
 clean:
