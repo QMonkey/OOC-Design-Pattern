@@ -1,24 +1,39 @@
 EXECPATH = ../bin
 OBJPATH = ../obj
-INCLUDEPATH = ../lib/include
+LIBPATH = ../lib/include
+INCLUDEPATH = include
+SRCPATH=src
 CC = gcc
+OPTIONS = -fms-extensions
 
 EXEC = $(EXECPATH)/State
-OBJS = $(OBJPATH)/observed.o $(OBJPATH)/observer.o $(OBJPATH)/main.o
+OBJS = $(OBJPATH)/qrcode_state_machine.o $(OBJPATH)/abstract_qrcode_state.o $(OBJPATH)/noqrcode_state.o $(OBJPATH)/qrcode_valid_state.o $(OBJPATH)/qrcode_authorizing_state.o $(OBJPATH)/qrcode_authorized_state.o $(OBJPATH)/State_main.o
 
 all: $(OBJS) $(EXEC)
 
-$(EXECPATH)/Observer: $(OBJS)
+$(EXEC): $(OBJS)
 	$(CC) -g -o $@ $(OBJS)
 
-$(OBJPATH)/observed.o: observed.c
-	$(CC) -g -c $< -I $(INCLUDEPATH) -o $@
+$(OBJPATH)/qrcode_state_machine.o: $(SRCPATH)/qrcode_state_machine.c
+	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
-$(OBJPATH)/observer.o: observer.c
-	$(CC) -g -c $< -I $(INCLUDEPATH) -o $@
+$(OBJPATH)/abstract_qrcode_state.o: $(SRCPATH)/abstract_qrcode_state.c
+	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
-$(OBJPATH)/main.o: main.c
-	$(CC) -g -c $< -I $(INCLUDEPATH) -o $@
+$(OBJPATH)/noqrcode_state.o: $(SRCPATH)/noqrcode_state.c
+	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
+
+$(OBJPATH)/qrcode_valid_state.o: $(SRCPATH)/qrcode_valid_state.c
+	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
+
+$(OBJPATH)/qrcode_authorizing_state.o: $(SRCPATH)/qrcode_authorizing_state.c
+	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
+
+$(OBJPATH)/qrcode_authorized_state.o: $(SRCPATH)/qrcode_authorized_state.c
+	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
+
+$(OBJPATH)/State_main.o: $(SRCPATH)/main.c
+	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
 clean:
 	-rm -rf $(EXEC) $(OBJS)

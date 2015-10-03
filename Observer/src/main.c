@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+#include "base.h"
 #include "iobserver.h"
 #include "observed.h"
 #include "observer.h"
@@ -8,15 +9,15 @@ const int OBSERVER_SIZE = 10;
 
 int main()
 {
-	Observed *observed = newObserved();
+	Observed *observed = new(Observed);
 	IObserved *iobserved = &observed->iobserved;
 
 	Observer *observers[OBSERVER_SIZE];
 	int i;
 	for(i = 0; i < OBSERVER_SIZE; ++i)
 	{
-		observers[i] = newObserver();
-		observed->iobserved.registerObserver(iobserved, &observers[i]->iobserver);
+		observers[i] = new(Observer);
+		observed->registerObserver(iobserved, &observers[i]->iobserver);
 		printf("%p\n", &observers[i]->iobserver);
 	}
 	printf("\n");
@@ -25,9 +26,9 @@ int main()
 
 	for(i = 0; i < OBSERVER_SIZE; ++i)
 	{
-		deleteObserver(observers[i]);
+		delete(Observer, observers[i]);
 	}
-	deleteObserved(observed);
+	delete(Observed, observed);
 
 	return 0;
 }

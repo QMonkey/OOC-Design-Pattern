@@ -22,12 +22,14 @@ struct _QRCodeStateMachine
         IQRCodeState *qrcodeAuthorizedState;
 
 	void (*setState)(QRCodeStateMachine*, enum _QRCodeState);
-	IQRCodeState iqrcodeState;
+	union
+	{
+		IQRCodeState;
+		IQRCodeState iqrcodeState;
+	};
 };
 
-extern QRCodeStateMachine* newQRCodeStateMachine();
 extern QRCodeStateMachine* constructQRCodeStateMachine(void*);
 extern void destructQRCodeStateMachine(QRCodeStateMachine*);
-extern void deleteQRCodeStateMachine(QRCodeStateMachine*);
 
 #endif

@@ -9,6 +9,7 @@ struct _IQRCodeState
 	void (*scanQRCode)(IQRCodeState*);
 	void (*auth)(IQRCodeState*);
 	void (*cancel)(IQRCodeState*);
+	void (*spend)(IQRCodeState*);
 };
 
 #endif

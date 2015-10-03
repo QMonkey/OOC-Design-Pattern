@@ -3,17 +3,17 @@
 
 #include "base.h"
 #include "qrcode_state_machine.h"
+#include "noqrcode_state.h"
+#include "qrcode_valid_state.h"
+#include "qrcode_authorizing_state.h"
+#include "qrcode_authorized_state.h"
 
 static void QRCodeStateMachine_setState(QRCodeStateMachine*, enum _QRCodeState);
 static void QRCodeStateMachine_getQRCode(IQRCodeState*);
 static void QRCodeStateMachine_scanQRCode(IQRCodeState*);
 static void QRCodeStateMachine_auth(IQRCodeState*);
 static void QRCodeStateMachine_cancel(IQRCodeState*);
-
-QRCodeStateMachine* newQRCodeStateMachine()
-{
-	return constructQRCodeStateMachine(malloc(sizeof(QRCodeStateMachine)));
-}
+static void QRCodeStateMachine_spend(IQRCodeState*);
 
 QRCodeStateMachine* constructQRCodeStateMachine(void *addr)
 {
@@ -21,40 +21,54 @@ QRCodeStateMachine* constructQRCodeStateMachine(void *addr)
 	{
 		return NULL;
 	}
+
+	QRCodeStateMachine *qrcodeStateMachine = addr;
+	qrcodeStateMachine->noQRCodeState = &new(NoQRCodeState, qrcodeStateMachine)->iqrcodeState;
+	qrcodeStateMachine->qrcodeValidState = &new(QRCodeValidState, qrcodeStateMachine)->iqrcodeState;
+	qrcodeStateMachine->qrcodeAuthorizingState = &new(QRCodeAuthorizingState, qrcodeStateMachine)->iqrcodeState;
+	qrcodeStateMachine->qrcodeAuthorizedState = &new(QRCodeAuthorizedState, qrcodeStateMachine)->iqrcodeState;
+	qrcodeStateMachine->currentState = qrcodeStateMachine->noQRCodeState;
+
+	qrcodeStateMachine->setState = QRCodeStateMachine_setState;
+	qrcodeStateMachine->getQRCode = QRCodeStateMachine_getQRCode;
+	qrcodeStateMachine->scanQRCode = QRCodeStateMachine_scanQRCode;
+	qrcodeStateMachine->auth = QRCodeStateMachine_auth;
+	qrcodeStateMachine->cancel = QRCodeStateMachine_cancel;
+	qrcodeStateMachine->spend = QRCodeStateMachine_spend;
+
+	return qrcodeStateMachine;
 }
 
 void destructQRCodeStateMachine(QRCodeStateMachine *stateMachine)
 {
-}
-
-void deleteQRCodeStateMachine(QRCodeStateMachine *stateMachine)
-{
-	destructQRCodeStateMachine(stateMachine);
-	free(stateMachine);
+	delete(NoQRCodeState, container_of(stateMachine->noQRCodeState, NoQRCodeState, iqrcodeState));
+	delete(QRCodeValidState, container_of(stateMachine->qrcodeValidState, QRCodeValidState, iqrcodeState));
+	delete(QRCodeAuthorizingState, container_of(stateMachine->qrcodeAuthorizingState, QRCodeAuthorizingState, iqrcodeState));
+	delete(QRCodeAuthorizedState, container_of(stateMachine->qrcodeAuthorizedState, QRCodeAuthorizedState, iqrcodeState));
 }
 
 void QRCodeStateMachine_setState(QRCodeStateMachine *stateMachine, enum _QRCodeState qrcodeState)
 {
 	switch(qrcodeState)
 	{
-	NOQRCODE:
+	case NOQRCODE:
 		stateMachine->currentState = stateMachine->noQRCodeState;
 		break;
 
-	VALID:
+	case VALID:
 		stateMachine->currentState = stateMachine->qrcodeValidState;
 		break;
 
-	AUTHORIZING:
+	case AUTHORIZING:
 		stateMachine->currentState = stateMachine->qrcodeAuthorizingState;
 		break;
 
-	AUTHORIZED:
+	case AUTHORIZED:
 		stateMachine->currentState = stateMachine->qrcodeAuthorizedState;
 		break;
 
 	defualt:
-		fprintf(stderr, "No such qrcode state!");
+		fprintf(stderr, "No such qrcode state!\n");
 	}
 }
 
@@ -80,4 +94,10 @@ void QRCodeStateMachine_cancel(IQRCodeState *iqrcodeState)
 {
 	QRCodeStateMachine *stateMachine = container_of(iqrcodeState, QRCodeStateMachine, iqrcodeState);
 	stateMachine->currentState->cancel(stateMachine->currentState);
+}
+
+void QRCodeStateMachine_spend(IQRCodeState *iqrcodeState)
+{
+	QRCodeStateMachine *stateMachine = container_of(iqrcodeState, QRCodeStateMachine, iqrcodeState);
+	stateMachine->currentState->spend(stateMachine->currentState);
 }

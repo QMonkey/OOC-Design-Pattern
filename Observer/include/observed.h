@@ -10,12 +10,14 @@ struct _Observed
         IObserver **observers;
 	size_t count;
 	size_t size;
-        IObserved iobserved;
+	union
+	{
+		IObserved;
+		IObserved iobserved;
+	};
 };
 
-extern Observed* newObserved();
 extern Observed* constructObserved(void*);
 extern void destructObserved(Observed*);
-extern void deleteObserved(Observed*);
 
 #endif

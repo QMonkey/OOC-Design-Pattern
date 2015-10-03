@@ -9,11 +9,6 @@ static void Observed_registerObserver(IObserved*, IObserver*);
 static void Observed_notifyObservers(IObserved*);
 static void Observed_removeObserver(IObserved*, IObserver*);
 
-Observed* newObserved()
-{
-	return constructObserved(malloc(sizeof(Observed)));
-}
-
 Observed* constructObserved(void *addr)
 {
 	if(addr == NULL)
@@ -26,9 +21,9 @@ Observed* constructObserved(void *addr)
 	observed->count = 0;
 	observed->size = 1;
 
-	observed->iobserved.registerObserver = Observed_registerObserver;
-	observed->iobserved.notifyObservers = Observed_notifyObservers;
-	observed->iobserved.removeObserver = Observed_removeObserver;
+	observed->registerObserver = Observed_registerObserver;
+	observed->notifyObservers = Observed_notifyObservers;
+	observed->removeObserver = Observed_removeObserver;
 
 	return observed;
 }
@@ -36,12 +31,6 @@ Observed* constructObserved(void *addr)
 void destructObserved(Observed *observed)
 {
 	free(observed->observers);
-}
-
-void deleteObserved(Observed *observed)
-{
-	destructObserved(observed);
-	free(observed);
 }
 
 void Observed_registerObserver(IObserved* iobserved, IObserver *observer)

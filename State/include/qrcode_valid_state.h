@@ -15,9 +15,7 @@ struct _QRCodeValidState
 	};
 };
 
-extern QRCodeValidState* newQRCodeValidState(QRCodeStateMachine*);
 extern QRCodeValidState* constructQRCodeValidState(void*, QRCodeStateMachine*);
-extern void destructQRCodeValidState(QRCodeStateMachine*);
-extern void deleteQRCodeValidState(QRCodeStateMachine*);
+extern void destructQRCodeValidState(QRCodeValidState*);
 
 #endif

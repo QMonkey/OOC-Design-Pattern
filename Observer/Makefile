@@ -1,24 +1,27 @@
 EXECPATH = ../bin
 OBJPATH = ../obj
-INCLUDEPATH = ../lib/include
+INCLUDEPATH = include
+LIBPATH = ../lib/include
+SRCPATH = src
 CC = gcc
+OPTIONS = -fms-extensions
 
 EXEC = $(EXECPATH)/Observer
 OBJS = $(OBJPATH)/observed.o $(OBJPATH)/observer.o $(OBJPATH)/Observer_main.o
 
 all: $(OBJS) $(EXEC)
 
-$(EXECPATH)/Observer: $(OBJS)
+$(EXEC): $(OBJS)
 	$(CC) -g -o $@ $(OBJS)
 
-$(OBJPATH)/observed.o: observed.c
-	$(CC) -g -c $< -I $(INCLUDEPATH) -o $@
+$(OBJPATH)/observed.o: $(SRCPATH)/observed.c
+	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
-$(OBJPATH)/observer.o: observer.c
-	$(CC) -g -c $< -I $(INCLUDEPATH) -o $@
+$(OBJPATH)/observer.o: $(SRCPATH)/observer.c
+	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
-$(OBJPATH)/Observer_main.o: main.c
-	$(CC) -g -c $< -I $(INCLUDEPATH) -o $@
+$(OBJPATH)/Observer_main.o: $(SRCPATH)/main.c
+	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
 clean:
 	-rm -rf $(EXEC) $(OBJS)
