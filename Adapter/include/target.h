@@ -1,13 +1,9 @@
 #ifndef TARGET_H
 #define TARGET_H
 
-typedef struct _ITarget ITarget;
-typedef struct _Target Target;
+#include "itarget.h"
 
-struct _ITarget
-{
-	long (*powerOf2)(ITarget*, int);
-};
+typedef struct _Target Target;
 
 struct _Target
 {

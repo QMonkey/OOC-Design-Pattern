@@ -10,6 +10,7 @@ struct _Observed
         IObserver **observers;
 	size_t count;
 	size_t size;
+
 	union
 	{
 		IObserved;

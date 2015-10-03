@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
 
+#include "itarget.h"
 #include "target.h"
 
 static long Target_powerOf2(ITarget*, int);

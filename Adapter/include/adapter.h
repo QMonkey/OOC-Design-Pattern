@@ -1,14 +1,14 @@
 #ifndef ADAPTER_H
 #define ADAPTER_H
 
-#include "target.h"
-#include "adaptee.h"
+#include "itarget.h"
+#include "iadaptee.h"
 
 typedef struct _Adapter Adapter;
 
 struct _Adapter
 {
-	IAdaptee *iadaptee;
+	IAdaptee *adaptee;
 
 	void (*setAdaptee)(Adapter*, IAdaptee*);
 	union

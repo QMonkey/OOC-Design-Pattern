@@ -1,13 +1,9 @@
 #ifndef ADAPTEE_H
 #define ADAPTEE_H
 
-typedef struct _IAdaptee IAdaptee;
-typedef struct _Adaptee Adaptee;
+#include "iadaptee.h"
 
-struct _IAdaptee
-{
-	long (*power)(IAdaptee*, int, int);
-};
+typedef struct _Adaptee Adaptee;
 
 struct _Adaptee
 {

@@ -1,14 +1,14 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 #include "base.h"
-#include "adaptee.h"
+#include "itarget.h"
+#include "iadaptee.h"
 #include "adapter.h"
 
 static long Adapter_powerOf2(ITarget*, int);
 static void Adapter_setAdaptee(Adapter*, IAdaptee*);
 
-Adapter* constructAdapter(void *addr, IAdaptee *idaptee)
+Adapter* constructAdapter(void *addr, IAdaptee *adaptee)
 {
 	if(addr == NULL)
 	{
@@ -16,7 +16,7 @@ Adapter* constructAdapter(void *addr, IAdaptee *idaptee)
 	}
 
 	Adapter *adapter = addr;
-	adapter->iadaptee = idaptee;
+	adapter->adaptee = adaptee;
 
 	adapter->powerOf2 = Adapter_powerOf2;
 	adapter->setAdaptee = Adapter_setAdaptee;
@@ -31,10 +31,10 @@ void destructAdapter(Adapter *adapter)
 long Adapter_powerOf2(ITarget *itarget, int exp)
 {
 	Adapter *adapter = container_of(itarget, Adapter, itarget);
-	return adapter->iadaptee->power(adapter->iadaptee, 2, exp);
+	return adapter->adaptee->power(adapter->adaptee, 2, exp);
 }
 
-void Adapter_setAdaptee(Adapter *adapter, IAdaptee *iadaptee)
+void Adapter_setAdaptee(Adapter *adapter, IAdaptee *adaptee)
 {
-	adapter->iadaptee = iadaptee;
+	adapter->adaptee = adaptee;
 }

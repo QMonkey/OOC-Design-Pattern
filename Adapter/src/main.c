@@ -1,9 +1,11 @@
 #include <stdio.h>
 
 #include "base.h"
+#include "itarget.h"
 #include "target.h"
-#include "adapter.h"
+#include "iadaptee.h"
 #include "adaptee.h"
+#include "adapter.h"
 
 int main()
 {

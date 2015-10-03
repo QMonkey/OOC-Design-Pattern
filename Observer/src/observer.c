@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 #include "base.h"
 #include "observer.h"
@@ -26,5 +25,5 @@ void destructObserver(Observer *observer)
 void Observer_handle(IObserver *iobserver)
 {
 	Observer *observer = container_of(iobserver, Observer, iobserver);
-	printf("%p\n", observer);
+	printf("handle: %p\n", observer);
 }

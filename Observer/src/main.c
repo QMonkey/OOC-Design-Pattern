@@ -18,7 +18,7 @@ int main()
 	{
 		observers[i] = new(Observer);
 		observed->registerObserver(iobserved, &observers[i]->iobserver);
-		printf("%p\n", &observers[i]->iobserver);
+		printf("handle: %p\n", &observers[i]->iobserver);
 	}
 	printf("\n");
 

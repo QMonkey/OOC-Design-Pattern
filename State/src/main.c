@@ -15,4 +15,6 @@ int main()
 	stateMachine->cancel(&stateMachine->iqrcodeState);
 
 	delete(QRCodeStateMachine, stateMachine);
+
+	return 0;
 }
