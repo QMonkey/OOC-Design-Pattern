@@ -1,7 +1,7 @@
 EXECPATH = bin
 OBJPATH = obj
 INCLUDEPATH = lib/include
-SRCPATH = Observer State
+SRCPATH = Observer State Singleton
 CC = gcc
 
 all:
