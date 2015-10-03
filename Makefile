@@ -1,7 +1,7 @@
 EXECPATH = bin
 OBJPATH = obj
 INCLUDEPATH = lib/include
-SRCPATH = Observer State Singleton Adapter
+SRCPATH = Observer State Singleton Adapter Decorator
 CC = gcc
 
 all:
