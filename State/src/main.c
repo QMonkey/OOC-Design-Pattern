@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 #include "base.h"
 #include "qrcode_state_machine.h"
 
