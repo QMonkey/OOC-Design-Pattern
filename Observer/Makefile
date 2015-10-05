@@ -7,7 +7,7 @@ CC = gcc
 OPTIONS = -fms-extensions
 
 EXEC = $(EXECPATH)/Observer
-OBJS = $(OBJPATH)/observed.o $(OBJPATH)/observer.o $(OBJPATH)/Observer_main.o
+OBJS = $(OBJPATH)/observed.o $(OBJPATH)/observer.o $(OBJPATH)/main.o
 
 all: $(OBJS) $(EXEC)
 
@@ -20,7 +20,7 @@ $(OBJPATH)/observed.o: $(SRCPATH)/observed.c
 $(OBJPATH)/observer.o: $(SRCPATH)/observer.c
 	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
-$(OBJPATH)/Observer_main.o: $(SRCPATH)/main.c
+$(OBJPATH)/main.o: $(SRCPATH)/main.c
 	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
 clean:

@@ -7,7 +7,7 @@ CC = gcc
 OPTIONS = -fms-extensions
 
 EXEC = $(EXECPATH)/Iterator
-OBJS = $(OBJPATH)/arraylist.o $(OBJPATH)/linkedlist.o $(OBJPATH)/arraylist_iterator.o $(OBJPATH)/linkedlist_iterator.o $(OBJPATH)/Iterator_main.o
+OBJS = $(OBJPATH)/arraylist.o $(OBJPATH)/linkedlist.o $(OBJPATH)/arraylist_iterator.o $(OBJPATH)/linkedlist_iterator.o $(OBJPATH)/main.o
 
 all: $(OBJS) $(EXEC)
 
@@ -26,7 +26,7 @@ $(OBJPATH)/arraylist_iterator.o: $(SRCPATH)/arraylist_iterator.c
 $(OBJPATH)/linkedlist_iterator.o: $(SRCPATH)/linkedlist_iterator.c
 	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
-$(OBJPATH)/Iterator_main.o: $(SRCPATH)/main.c
+$(OBJPATH)/main.o: $(SRCPATH)/main.c
 	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
 clean:

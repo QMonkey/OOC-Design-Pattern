@@ -7,7 +7,7 @@ CC = gcc
 OPTIONS = -fms-extensions
 
 EXEC = $(EXECPATH)/Adapter
-OBJS = $(OBJPATH)/target.o $(OBJPATH)/adaptee.o $(OBJPATH)/adapter.o $(OBJPATH)/Adapter_main.o
+OBJS = $(OBJPATH)/target.o $(OBJPATH)/adaptee.o $(OBJPATH)/adapter.o $(OBJPATH)/main.o
 
 all: $(OBJS) $(EXEC)
 
@@ -23,7 +23,7 @@ $(OBJPATH)/adaptee.o: $(SRCPATH)/adaptee.c
 $(OBJPATH)/adapter.o: $(SRCPATH)/adapter.c
 	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
-$(OBJPATH)/Adapter_main.o: $(SRCPATH)/main.c
+$(OBJPATH)/main.o: $(SRCPATH)/main.c
 	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
 clean:

@@ -7,7 +7,7 @@ CC = gcc
 OPTIONS = -fms-extensions
 
 EXEC = $(EXECPATH)/Singleton
-OBJS = $(OBJPATH)/singleton.o $(OBJPATH)/Singleton_main.o
+OBJS = $(OBJPATH)/singleton.o $(OBJPATH)/main.o
 
 all: $(OBJS) $(EXEC)
 
@@ -17,7 +17,7 @@ $(EXEC): $(OBJS)
 $(OBJPATH)/singleton.o: $(SRCPATH)/singleton.c
 	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
-$(OBJPATH)/Singleton_main.o: $(SRCPATH)/main.c
+$(OBJPATH)/main.o: $(SRCPATH)/main.c
 	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
 clean:

@@ -7,7 +7,7 @@ CC = gcc
 OPTIONS = -fms-extensions
 
 EXEC = $(EXECPATH)/Decorator
-OBJS = $(OBJPATH)/window.o $(OBJPATH)/border_decorator.o $(OBJPATH)/Decorator_main.o
+OBJS = $(OBJPATH)/window.o $(OBJPATH)/border_decorator.o $(OBJPATH)/main.o
 
 all: $(OBJS) $(EXEC)
 
@@ -20,7 +20,7 @@ $(OBJPATH)/window.o: $(SRCPATH)/window.c
 $(OBJPATH)/border_decorator.o: $(SRCPATH)/border_decorator.c
 	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
-$(OBJPATH)/Decorator_main.o: $(SRCPATH)/main.c
+$(OBJPATH)/main.o: $(SRCPATH)/main.c
 	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
 clean:

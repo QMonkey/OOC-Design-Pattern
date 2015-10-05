@@ -7,7 +7,7 @@ CC = gcc
 OPTIONS = -fms-extensions
 
 EXEC = $(EXECPATH)/Command
-OBJS = $(OBJPATH)/linkedlist.o $(OBJPATH)/linkedqueue.o $(OBJPATH)/linked_blockingqueue.o $(OBJPATH)/thread_pool.o $(OBJPATH)/Command_main.o
+OBJS = $(OBJPATH)/linkedlist.o $(OBJPATH)/linkedqueue.o $(OBJPATH)/linked_blockingqueue.o $(OBJPATH)/thread_pool.o $(OBJPATH)/main.o
 
 all: $(OBJS) $(EXEC)
 
@@ -26,7 +26,7 @@ $(OBJPATH)/linked_blockingqueue.o: $(SRCPATH)/linked_blockingqueue.c
 $(OBJPATH)/thread_pool.o: $(SRCPATH)/thread_pool.c
 	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
-$(OBJPATH)/Command_main.o: $(SRCPATH)/main.c
+$(OBJPATH)/main.o: $(SRCPATH)/main.c
 	$(CC) -g -c $< -I $(LIBPATH) -I $(INCLUDEPATH) -o $@ $(OPTIONS)
 
 clean:
