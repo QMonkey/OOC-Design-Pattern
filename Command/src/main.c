@@ -37,7 +37,6 @@ int main()
 
 	sleep(3);
 	threadPool->stop(threadPool);
-	sleep(3);
 
 	delete(ThreadPool, threadPool);
 	return 0;

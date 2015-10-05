@@ -1,5 +1,5 @@
 EXECPATH = ../bin
-OBJPATH = ../obj
+OBJPATH = ../obj/Iterator
 INCLUDEPATH = include
 LIBPATH = ../lib/include
 SRCPATH = src

@@ -1,5 +1,5 @@
 EXECPATH = ../bin
-OBJPATH = ../obj
+OBJPATH = ../obj/Command
 INCLUDEPATH = include
 LIBPATH = ../lib/include
 SRCPATH = src

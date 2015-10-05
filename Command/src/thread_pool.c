@@ -15,6 +15,19 @@ static void ThreadPool_stop(ThreadPool*);
 static void ThreadPool_execute(ThreadPool*, ICommand*);
 static void* ThreadPool_run(void *arg);
 
+static void ThreadPool_doNothing()
+{
+}
+
+static struct
+{
+	union
+	{
+		ICommand;
+		ICommand icommand;
+	};
+} stopCommand = {.execute = ThreadPool_doNothing};
+
 ThreadPool* constructThreadPool(void *addr, int threadCount)
 {
 	if(addr == NULL)
@@ -25,6 +38,8 @@ ThreadPool* constructThreadPool(void *addr, int threadCount)
 	ThreadPool *threadPool = addr;
 	threadPool->isStop = 1;
 	threadPool->threadCount = threadCount;
+	threadPool->tids = NULL;
+	threadPool->tidSize = 0;
 
 	threadPool->iblockingQueue = &new(LinkedBlockingQueue)->iblockingQueue;
 	if(threadPool->iblockingQueue == NULL)
@@ -63,11 +78,17 @@ void* ThreadPool_run(void *arg)
 void ThreadPool_start(ThreadPool *threadPool)
 {
 	threadPool->isStop = 0;
+	if(threadPool->tidSize < threadPool->threadCount)
+	{
+		free(threadPool->tids);
+		threadPool->tids = malloc(sizeof(pthread_t) * threadPool->threadCount);
+		threadPool->tidSize = threadPool->threadCount;
+	}
+
 	int i;
 	for(i = 0; i < threadPool->threadCount; ++i)
 	{
-		pthread_t tid;
-		int err = pthread_create(&tid, NULL, ThreadPool_run, threadPool);
+		int err = pthread_create(threadPool->tids + i, NULL, ThreadPool_run, threadPool);
 		if(err)
 		{
 			fprintf(stderr, "pthread_create error. [err=%s]\n", strerror(err));
@@ -78,6 +99,21 @@ void ThreadPool_start(ThreadPool *threadPool)
 void ThreadPool_stop(ThreadPool *threadPool)
 {
 	threadPool->isStop = 1;
+
+	int i;
+	for(i = 0; i < threadPool->threadCount; ++i)
+	{
+		threadPool->execute(threadPool, &stopCommand.icommand);
+	}
+
+	for(i = 0; i < threadPool->tidSize; ++i)
+	{
+		int err = pthread_join(threadPool->tids[i], NULL);
+		if(err)
+		{
+			fprintf(stderr, "pthread_join error. [err=%s]\n", strerror(err));
+		}
+	}
 }
 
 void ThreadPool_execute(ThreadPool *threadPool, ICommand *command)
