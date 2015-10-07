@@ -1,7 +1,7 @@
 EXECPATH = bin
 OBJPATH = obj
 INCLUDEPATH = lib/include
-SRCPATH = Observer State Singleton Adapter Decorator Strategy Iterator Command
+SRCPATH = Observer State Singleton Adapter Decorator Strategy Iterator Command Composite
 CC = gcc
 
 all:
