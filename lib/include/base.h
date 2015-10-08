@@ -20,11 +20,4 @@
 				while(0)
 // clang-format on
 
-typedef struct _IObject IObject;
-
-struct _IObject
-{
-	void (*destruct)(IObject*);
-};
-
 #endif
