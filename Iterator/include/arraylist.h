@@ -1,13 +1,15 @@
 #ifndef ARRAYLIST_H
 #define ARRAYLIST_H
 
+#include <stddef.h>
+
 #include "ilist.h"
 
 typedef struct _ArrayList ArrayList;
 
 struct _ArrayList
 {
-	int *data;
+	int* data;
 	size_t capacity;
 	size_t size;
 

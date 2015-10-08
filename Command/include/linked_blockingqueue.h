@@ -11,7 +11,7 @@ struct _LinkedBlockingQueue
 {
 	pthread_mutex_t mutex;
 	pthread_cond_t cond;
-	IQueue *queue;
+	IQueue* queue;
 
 	union
 	{

@@ -7,7 +7,7 @@ typedef struct _BorderDecorator BorderDecorator;
 
 struct _BorderDecorator
 {
-	IWindow *window;
+	IWindow* window;
 
 	void (*setWindow)(BorderDecorator*, IWindow*);
 	union

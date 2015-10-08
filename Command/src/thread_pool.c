@@ -13,7 +13,7 @@ static void ThreadPool_setThreadCount(ThreadPool*, int);
 static void ThreadPool_start(ThreadPool*);
 static void ThreadPool_stop(ThreadPool*);
 static void ThreadPool_execute(ThreadPool*, ICommand*);
-static void* ThreadPool_run(void *arg);
+static void* ThreadPool_run(void* arg);
 
 static void ThreadPool_doNothing()
 {
@@ -28,21 +28,21 @@ static struct
 	};
 } stopCommand = {.execute = ThreadPool_doNothing};
 
-ThreadPool* constructThreadPool(void *addr, int threadCount)
+ThreadPool* constructThreadPool(void* addr, int threadCount)
 {
-	if(addr == NULL)
+	if (addr == NULL)
 	{
 		return NULL;
 	}
 
-	ThreadPool *threadPool = addr;
+	ThreadPool* threadPool = addr;
 	threadPool->isStop = 1;
 	threadPool->threadCount = threadCount;
 	threadPool->tids = NULL;
 	threadPool->tidSize = 0;
 
-	threadPool->iblockingQueue = &new(LinkedBlockingQueue)->iblockingQueue;
-	if(threadPool->iblockingQueue == NULL)
+	threadPool->iblockingQueue = &new (LinkedBlockingQueue)->iblockingQueue;
+	if (threadPool->iblockingQueue == NULL)
 	{
 		return NULL;
 	}
@@ -54,69 +54,76 @@ ThreadPool* constructThreadPool(void *addr, int threadCount)
 	return threadPool;
 }
 
-void destructThreadPool(ThreadPool *threadPool)
+void destructThreadPool(ThreadPool* threadPool)
 {
-	LinkedBlockingQueue *linkedBlockingQueue = container_of(threadPool->iblockingQueue, LinkedBlockingQueue, iblockingQueue);
-	delete(LinkedBlockingQueue, linkedBlockingQueue);
+	LinkedBlockingQueue* linkedBlockingQueue = container_of(
+	    threadPool->iblockingQueue, LinkedBlockingQueue, iblockingQueue);
+	delete (LinkedBlockingQueue, linkedBlockingQueue);
 }
 
-void ThreadPool_setThreadCount(ThreadPool *threadPool, int threadCount)
+void ThreadPool_setThreadCount(ThreadPool* threadPool, int threadCount)
 {
 	threadPool->threadCount = threadCount;
 }
 
-void* ThreadPool_run(void *arg)
+void* ThreadPool_run(void* arg)
 {
-	ThreadPool *threadPool = arg;
-	while(!threadPool->isStop)
+	ThreadPool* threadPool = arg;
+	while (!threadPool->isStop)
 	{
-		ICommand *command = threadPool->iblockingQueue->pop(&threadPool->iblockingQueue->iqueue);
+		ICommand* command = threadPool->iblockingQueue->pop(
+		    &threadPool->iblockingQueue->iqueue);
 		command->execute(command);
 	}
 }
 
-void ThreadPool_start(ThreadPool *threadPool)
+void ThreadPool_start(ThreadPool* threadPool)
 {
 	threadPool->isStop = 0;
-	if(threadPool->tidSize < threadPool->threadCount)
+	if (threadPool->tidSize < threadPool->threadCount)
 	{
 		free(threadPool->tids);
-		threadPool->tids = malloc(sizeof(pthread_t) * threadPool->threadCount);
+		threadPool->tids =
+		    malloc(sizeof(pthread_t) * threadPool->threadCount);
 		threadPool->tidSize = threadPool->threadCount;
 	}
 
 	int i;
-	for(i = 0; i < threadPool->threadCount; ++i)
+	for (i = 0; i < threadPool->threadCount; ++i)
 	{
-		int err = pthread_create(threadPool->tids + i, NULL, ThreadPool_run, threadPool);
-		if(err)
+		int err = pthread_create(threadPool->tids + i, NULL,
+					 ThreadPool_run, threadPool);
+		if (err)
 		{
-			fprintf(stderr, "pthread_create error. [err=%s]\n", strerror(err));
+			fprintf(stderr, "pthread_create error. [err=%s]\n",
+				strerror(err));
 		}
 	}
 }
 
-void ThreadPool_stop(ThreadPool *threadPool)
+void ThreadPool_stop(ThreadPool* threadPool)
 {
 	threadPool->isStop = 1;
 
 	int i;
-	for(i = 0; i < threadPool->threadCount; ++i)
+	for (i = 0; i < threadPool->threadCount; ++i)
 	{
 		threadPool->execute(threadPool, &stopCommand.icommand);
 	}
 
-	for(i = 0; i < threadPool->tidSize; ++i)
+	for (i = 0; i < threadPool->tidSize; ++i)
 	{
 		int err = pthread_join(threadPool->tids[i], NULL);
-		if(err)
+		if (err)
 		{
-			fprintf(stderr, "pthread_join error. [err=%s]\n", strerror(err));
+			fprintf(stderr, "pthread_join error. [err=%s]\n",
+				strerror(err));
 		}
 	}
 }
 
-void ThreadPool_execute(ThreadPool *threadPool, ICommand *command)
+void ThreadPool_execute(ThreadPool* threadPool, ICommand* command)
 {
-	threadPool->iblockingQueue->push(&threadPool->iblockingQueue->iqueue, command);
+	threadPool->iblockingQueue->push(&threadPool->iblockingQueue->iqueue,
+					 command);
 }

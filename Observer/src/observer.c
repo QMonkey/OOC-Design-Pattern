@@ -5,25 +5,25 @@
 
 static void Observer_handle(IObserver*);
 
-Observer* constructObserver(void *addr)
+Observer* constructObserver(void* addr)
 {
-	if(addr == NULL)
+	if (addr == NULL)
 	{
 		return NULL;
 	}
 
-	Observer *observer = addr;
+	Observer* observer = addr;
 	observer->handle = Observer_handle;
 
 	return observer;
 }
 
-void destructObserver(Observer *observer)
+void destructObserver(Observer* observer)
 {
 }
 
-void Observer_handle(IObserver *iobserver)
+void Observer_handle(IObserver* iobserver)
 {
-	Observer *observer = container_of(iobserver, Observer, iobserver);
+	Observer* observer = container_of(iobserver, Observer, iobserver);
 	printf("handle: %p\n", observer);
 }

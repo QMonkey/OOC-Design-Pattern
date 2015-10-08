@@ -9,14 +9,14 @@ const int OBSERVER_SIZE = 10;
 
 int main()
 {
-	Observed *observed = new(Observed);
-	IObserved *iobserved = &observed->iobserved;
+	Observed* observed = new (Observed);
+	IObserved* iobserved = &observed->iobserved;
 
-	Observer *observers[OBSERVER_SIZE];
+	Observer* observers[OBSERVER_SIZE];
 	int i;
-	for(i = 0; i < OBSERVER_SIZE; ++i)
+	for (i = 0; i < OBSERVER_SIZE; ++i)
 	{
-		observers[i] = new(Observer);
+		observers[i] = new (Observer);
 		observed->registerObserver(iobserved, &observers[i]->iobserver);
 		printf("handle: %p\n", &observers[i]->iobserver);
 	}
@@ -24,11 +24,11 @@ int main()
 
 	iobserved->notifyObservers(iobserved);
 
-	for(i = 0; i < OBSERVER_SIZE; ++i)
+	for (i = 0; i < OBSERVER_SIZE; ++i)
 	{
-		delete(Observer, observers[i]);
+		delete (Observer, observers[i]);
 	}
-	delete(Observed, observed);
+	delete (Observed, observed);
 
 	return 0;
 }

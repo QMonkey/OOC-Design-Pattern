@@ -8,7 +8,7 @@ typedef struct _AbstractQRCodeState AbstractQRCodeState;
 
 struct _AbstractQRCodeState
 {
-	QRCodeStateMachine *stateMachine;
+	QRCodeStateMachine* stateMachine;
 	union
 	{
 		IQRCodeState;

@@ -15,11 +15,11 @@ enum _QRCodeState
 
 struct _QRCodeStateMachine
 {
-        IQRCodeState *currentState;
-        IQRCodeState *noQRCodeState;
-        IQRCodeState *qrcodeValidState;
-        IQRCodeState *qrcodeAuthorizingState;
-        IQRCodeState *qrcodeAuthorizedState;
+	IQRCodeState* currentState;
+	IQRCodeState* noQRCodeState;
+	IQRCodeState* qrcodeValidState;
+	IQRCodeState* qrcodeAuthorizingState;
+	IQRCodeState* qrcodeAuthorizedState;
 
 	void (*setState)(QRCodeStateMachine*, enum _QRCodeState);
 	union

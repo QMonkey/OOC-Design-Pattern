@@ -4,16 +4,16 @@
 
 int main()
 {
-	Window *window = new(Window, 10, 20);
-	IWindow *iwindow = &window->iwindow;
+	Window* window = new (Window, 10, 20);
+	IWindow* iwindow = &window->iwindow;
 	iwindow->draw(iwindow);
 
-	BorderDecorator *borderDecorator = new(BorderDecorator, iwindow);
+	BorderDecorator* borderDecorator = new (BorderDecorator, iwindow);
 	iwindow = &borderDecorator->iwindow;
 	iwindow->draw(iwindow);
 
-	delete(BorderDecorator, borderDecorator);
-	delete(Window, window);
+	delete (BorderDecorator, borderDecorator);
+	delete (Window, window);
 
 	return 0;
 }

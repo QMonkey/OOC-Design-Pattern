@@ -16,21 +16,21 @@ typedef struct _Task
 	};
 } Task;
 
-void Task_execute(ICommand *icommand)
+void Task_execute(ICommand* icommand)
 {
 	printf("command, tid=%lu\n", pthread_self());
 }
 
 int main()
 {
-	ThreadPool *threadPool = new(ThreadPool, 10);
+	ThreadPool* threadPool = new (ThreadPool, 10);
 
 	Task task;
 	task.execute = Task_execute;
 
 	threadPool->start(threadPool);
 	int i;
-	for(i = 0; i < 20; ++i)
+	for (i = 0; i < 20; ++i)
 	{
 		threadPool->execute(threadPool, &task.icommand);
 	}
@@ -38,6 +38,6 @@ int main()
 	sleep(3);
 	threadPool->stop(threadPool);
 
-	delete(ThreadPool, threadPool);
+	delete (ThreadPool, threadPool);
 	return 0;
 }

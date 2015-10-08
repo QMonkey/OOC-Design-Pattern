@@ -9,12 +9,12 @@ typedef struct _ListNode ListNode;
 struct _ListNode
 {
 	int value;
-	ListNode *next;
+	ListNode* next;
 };
 
 struct _LinkedList
 {
-	ListNode *head;
+	ListNode* head;
 
 	union
 	{

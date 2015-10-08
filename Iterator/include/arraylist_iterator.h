@@ -9,7 +9,7 @@ typedef struct _ArrayListIterator ArrayListIterator;
 struct _ArrayListIterator
 {
 	size_t currentIndex;
-	ArrayList *arrayList;
+	ArrayList* arrayList;
 
 	union
 	{

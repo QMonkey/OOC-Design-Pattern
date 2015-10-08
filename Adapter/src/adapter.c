@@ -8,14 +8,14 @@
 static long Adapter_powerOf2(ITarget*, int);
 static void Adapter_setAdaptee(Adapter*, IAdaptee*);
 
-Adapter* constructAdapter(void *addr, IAdaptee *adaptee)
+Adapter* constructAdapter(void* addr, IAdaptee* adaptee)
 {
-	if(addr == NULL)
+	if (addr == NULL)
 	{
 		return NULL;
 	}
 
-	Adapter *adapter = addr;
+	Adapter* adapter = addr;
 	adapter->adaptee = adaptee;
 
 	adapter->powerOf2 = Adapter_powerOf2;
@@ -24,17 +24,17 @@ Adapter* constructAdapter(void *addr, IAdaptee *adaptee)
 	return adapter;
 }
 
-void destructAdapter(Adapter *adapter)
+void destructAdapter(Adapter* adapter)
 {
 }
 
-long Adapter_powerOf2(ITarget *itarget, int exp)
+long Adapter_powerOf2(ITarget* itarget, int exp)
 {
-	Adapter *adapter = container_of(itarget, Adapter, itarget);
+	Adapter* adapter = container_of(itarget, Adapter, itarget);
 	return adapter->adaptee->power(adapter->adaptee, 2, exp);
 }
 
-void Adapter_setAdaptee(Adapter *adapter, IAdaptee *adaptee)
+void Adapter_setAdaptee(Adapter* adapter, IAdaptee* adaptee)
 {
 	adapter->adaptee = adaptee;
 }

@@ -7,7 +7,7 @@ typedef struct _Person Person;
 
 struct _Person
 {
-	ITravelStrategy *travelStrategy;
+	ITravelStrategy* travelStrategy;
 
 	void (*setTravelStrategy)(Person*, ITravelStrategy*);
 	void (*travel)(Person*);

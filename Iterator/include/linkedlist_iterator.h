@@ -8,7 +8,7 @@ typedef struct _LinkedListIterator LinkedListIterator;
 
 struct _LinkedListIterator
 {
-	ListNode *currentNode;
+	ListNode* currentNode;
 
 	union
 	{

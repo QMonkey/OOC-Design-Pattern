@@ -9,14 +9,14 @@ static void Observed_registerObserver(IObserved*, IObserver*);
 static void Observed_notifyObservers(IObserved*);
 static void Observed_removeObserver(IObserved*, IObserver*);
 
-Observed* constructObserved(void *addr)
+Observed* constructObserved(void* addr)
 {
-	if(addr == NULL)
+	if (addr == NULL)
 	{
 		return NULL;
 	}
 
-	Observed *observed = addr;
+	Observed* observed = addr;
 	observed->observers = malloc(sizeof(IObserver*));
 	observed->count = 0;
 	observed->size = 1;
@@ -28,34 +28,35 @@ Observed* constructObserved(void *addr)
 	return observed;
 }
 
-void destructObserved(Observed *observed)
+void destructObserved(Observed* observed)
 {
 	free(observed->observers);
 }
 
-void Observed_registerObserver(IObserved* iobserved, IObserver *observer)
+void Observed_registerObserver(IObserved* iobserved, IObserver* observer)
 {
-	Observed *observed = container_of(iobserved, Observed, iobserved);
+	Observed* observed = container_of(iobserved, Observed, iobserved);
 
 	int i;
-	for(i = 0; i < observed->count; ++i)
+	for (i = 0; i < observed->count; ++i)
 	{
-		if(observed->observers[i] == observer)
+		if (observed->observers[i] == observer)
 		{
 			return;
 		}
 	}
 
-	if(observed->count == observed->size)
+	if (observed->count == observed->size)
 	{
 		int size = observed->size << 1;
-		IObserver **observers = malloc(sizeof(IObserver*) * size);
-		if(observers == NULL)
+		IObserver** observers = malloc(sizeof(IObserver*) * size);
+		if (observers == NULL)
 		{
 			return;
 		}
 
-		memcpy(observers, observed->observers, sizeof(IObserver*) * observed->count);
+		memcpy(observers, observed->observers,
+		       sizeof(IObserver*) * observed->count);
 		free(observed->observers);
 		observed->observers = observers;
 		observed->size = size;
@@ -66,37 +67,37 @@ void Observed_registerObserver(IObserved* iobserved, IObserver *observer)
 
 void Observed_notifyObservers(IObserved* iobserved)
 {
-	Observed *observed = container_of(iobserved, Observed, iobserved);
+	Observed* observed = container_of(iobserved, Observed, iobserved);
 
 	int i;
-	for(i = 0; i < observed->count; ++i)
+	for (i = 0; i < observed->count; ++i)
 	{
-		IObserver *observer = observed->observers[i];
+		IObserver* observer = observed->observers[i];
 		observer->handle(observer);
 	}
 }
 
-void Observed_removeObserver(IObserved* iobserved, IObserver *observer)
+void Observed_removeObserver(IObserved* iobserved, IObserver* observer)
 {
-	Observed *observed = container_of(iobserved, Observed, iobserved);
+	Observed* observed = container_of(iobserved, Observed, iobserved);
 
 	int i;
-	for(i = 0; i < observed->count; ++i)
+	for (i = 0; i < observed->count; ++i)
 	{
-		if(observed->observers[i] == observer)
+		if (observed->observers[i] == observer)
 		{
 			break;
 		}
 	}
 
-	if(i == observed->count)
+	if (i == observed->count)
 	{
 		return;
 	}
 
 	--observed->count;
-	for(; i < observed->count; ++i)
+	for (; i < observed->count; ++i)
 	{
-		observed->observers[i] = observed->observers[i+1];
+		observed->observers[i] = observed->observers[i + 1];
 	}
 }

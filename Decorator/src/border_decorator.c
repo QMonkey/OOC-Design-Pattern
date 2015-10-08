@@ -7,14 +7,14 @@
 static void BorderDecorator_draw(IWindow*);
 static void BorderDecorator_setWindow(BorderDecorator*, IWindow*);
 
-BorderDecorator* constructBorderDecorator(void *addr, IWindow *window)
+BorderDecorator* constructBorderDecorator(void* addr, IWindow* window)
 {
-	if(addr == NULL)
+	if (addr == NULL)
 	{
 		return NULL;
 	}
 
-	BorderDecorator *borderDecorator = addr;
+	BorderDecorator* borderDecorator = addr;
 	borderDecorator->window = window;
 
 	borderDecorator->draw = BorderDecorator_draw;
@@ -22,18 +22,20 @@ BorderDecorator* constructBorderDecorator(void *addr, IWindow *window)
 	return borderDecorator;
 }
 
-void destructBorderDecorator(BorderDecorator *borderDecorator)
+void destructBorderDecorator(BorderDecorator* borderDecorator)
 {
 }
 
-void BorderDecorator_draw(IWindow *iwindow)
+void BorderDecorator_draw(IWindow* iwindow)
 {
-	BorderDecorator *borderDecorator = container_of(iwindow, BorderDecorator, iwindow);
+	BorderDecorator* borderDecorator =
+	    container_of(iwindow, BorderDecorator, iwindow);
 	borderDecorator->window->draw(borderDecorator->window);
 	printf("draw border\n");
 }
 
-void BorderDecorator_setWindow(BorderDecorator *borderDecorator, IWindow *window)
+void BorderDecorator_setWindow(BorderDecorator* borderDecorator,
+			       IWindow* window)
 {
 	borderDecorator->window = window;
 }

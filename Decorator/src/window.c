@@ -6,14 +6,14 @@
 
 static void Window_draw(IWindow*);
 
-Window* constructWindow(void *addr, int height, int width)
+Window* constructWindow(void* addr, int height, int width)
 {
-	if(addr == NULL)
+	if (addr == NULL)
 	{
 		return NULL;
 	}
 
-	Window *window = addr;
+	Window* window = addr;
 	window->height = height;
 	window->width = width;
 
@@ -22,12 +22,13 @@ Window* constructWindow(void *addr, int height, int width)
 	return window;
 }
 
-void destructWindow(Window *window)
+void destructWindow(Window* window)
 {
 }
 
-void Window_draw(IWindow *iwindow)
+void Window_draw(IWindow* iwindow)
 {
-	Window *window = container_of(iwindow, Window, iwindow);
-	printf("draw window: height=%d, weight=%d\n", window->height, window->width);
+	Window* window = container_of(iwindow, Window, iwindow);
+	printf("draw window: height=%d, weight=%d\n", window->height,
+	       window->width);
 }

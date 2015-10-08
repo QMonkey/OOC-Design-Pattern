@@ -8,28 +8,29 @@
 #include "base.h"
 #include "singleton.h"
 
-static Singleton* constructSingleton(void *addr);
+static Singleton* constructSingleton(void* addr);
 
 static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 static volatile int isInit = 0;
-static Singleton *singleton = NULL;
+static Singleton* singleton = NULL;
 
-Singleton* constructSingleton(void *addr)
+Singleton* constructSingleton(void* addr)
 {
-	if(addr == NULL)
+	if (addr == NULL)
 	{
 		return NULL;
 	}
 
 	struct timeval tv;
 	int errCode = gettimeofday(&tv, NULL);
-	if(errCode)
+	if (errCode)
 	{
-		fprintf(stderr, "gettimeofday error. [err=%s]", strerror(errCode));
+		fprintf(stderr, "gettimeofday error. [err=%s]",
+			strerror(errCode));
 		abort();
 	}
 
-	Singleton *singleton = addr;
+	Singleton* singleton = addr;
 	singleton->currentTime = tv.tv_sec * 1000000 + tv.tv_usec;
 
 	return singleton;
@@ -37,19 +38,20 @@ Singleton* constructSingleton(void *addr)
 
 Singleton* getSingleton()
 {
-	if(!isInit)
+	if (!isInit)
 	{
 		int errCode = pthread_mutex_lock(&mutex);
-		if(errCode)
+		if (errCode)
 		{
-			fprintf(stderr, "pthread_mutex_lock error. [err=%s]", strerror(errCode));
+			fprintf(stderr, "pthread_mutex_lock error. [err=%s]",
+				strerror(errCode));
 			abort();
 		}
 
-		if(!isInit)
+		if (!isInit)
 		{
-			singleton = new(Singleton);
-			if(singleton == NULL)
+			singleton = new (Singleton);
+			if (singleton == NULL)
 			{
 				fprintf(stderr, "Fail to new singleton.\n");
 				abort();
@@ -58,9 +60,10 @@ Singleton* getSingleton()
 		isInit = 1;
 
 		errCode = pthread_mutex_unlock(&mutex);
-		if(errCode)
+		if (errCode)
 		{
-			fprintf(stderr, "pthread_mutex_unlock error. [err=%s]", strerror(errCode));
+			fprintf(stderr, "pthread_mutex_unlock error. [err=%s]",
+				strerror(errCode));
 			abort();
 		}
 	}

@@ -14,14 +14,14 @@ static size_t LinkedList_count(IList*);
 static int LinkedList_empty(IList*);
 static IIterator* LinkedList_iterator(IList*);
 
-LinkedList* constructLinkedList(void *addr)
+LinkedList* constructLinkedList(void* addr)
 {
-	if(addr == NULL)
+	if (addr == NULL)
 	{
 		return NULL;
 	}
 
-	LinkedList *linkedList = addr;
+	LinkedList* linkedList = addr;
 	linkedList->head = NULL;
 
 	linkedList->push = LinkedList_push;
@@ -33,10 +33,10 @@ LinkedList* constructLinkedList(void *addr)
 	return linkedList;
 }
 
-void destructLinkedList(LinkedList *linkedList)
+void destructLinkedList(LinkedList* linkedList)
 {
-	ListNode *tmp = linkedList->head;
-	while(linkedList->head != NULL)
+	ListNode* tmp = linkedList->head;
+	while (linkedList->head != NULL)
 	{
 		linkedList->head = tmp->next;
 		free(tmp);
@@ -44,29 +44,29 @@ void destructLinkedList(LinkedList *linkedList)
 	}
 }
 
-void LinkedList_push(IList *ilist, int elem)
+void LinkedList_push(IList* ilist, int elem)
 {
-	LinkedList *linkedList = container_of(ilist, LinkedList, ilist);
+	LinkedList* linkedList = container_of(ilist, LinkedList, ilist);
 
-	ListNode **node = &linkedList->head;
-	while(*node != NULL)
+	ListNode** node = &linkedList->head;
+	while (*node != NULL)
 	{
 		node = &(*node)->next;
 	}
 
-	ListNode *tmpNode = (ListNode*)malloc(sizeof(ListNode));
+	ListNode* tmpNode = (ListNode*)malloc(sizeof(ListNode));
 	tmpNode->value = elem;
 	tmpNode->next = NULL;
 
 	*node = tmpNode;
 }
 
-int LinkedList_pop(IList *ilist)
+int LinkedList_pop(IList* ilist)
 {
-	LinkedList *linkedList = container_of(ilist, LinkedList, ilist);
+	LinkedList* linkedList = container_of(ilist, LinkedList, ilist);
 	assert(linkedList->head != NULL);
 
-	ListNode *tmp = linkedList->head;
+	ListNode* tmp = linkedList->head;
 	linkedList->head = tmp->next;
 
 	int value = tmp->value;
@@ -75,13 +75,13 @@ int LinkedList_pop(IList *ilist)
 	return value;
 }
 
-size_t LinkedList_count(IList *ilist)
+size_t LinkedList_count(IList* ilist)
 {
-	LinkedList *linkedList = container_of(ilist, LinkedList, ilist);
+	LinkedList* linkedList = container_of(ilist, LinkedList, ilist);
 
-	ListNode *tmp = linkedList->head;
+	ListNode* tmp = linkedList->head;
 	size_t count;
-	for(count = 0; tmp != NULL; tmp = tmp->next)
+	for (count = 0; tmp != NULL; tmp = tmp->next)
 	{
 		++count;
 	}
@@ -89,14 +89,14 @@ size_t LinkedList_count(IList *ilist)
 	return count;
 }
 
-int LinkedList_empty(IList *ilist)
+int LinkedList_empty(IList* ilist)
 {
-	LinkedList *linkedList = container_of(ilist, LinkedList, ilist);
+	LinkedList* linkedList = container_of(ilist, LinkedList, ilist);
 	return linkedList->head == NULL;
 }
 
-IIterator* LinkedList_iterator(IList *ilist)
+IIterator* LinkedList_iterator(IList* ilist)
 {
-	LinkedList *linkedList = container_of(ilist, LinkedList, ilist);
-	return &new(LinkedListIterator, linkedList->head)->iiterator;
+	LinkedList* linkedList = container_of(ilist, LinkedList, ilist);
+	return &new (LinkedListIterator, linkedList->head)->iiterator;
 }

@@ -3,6 +3,8 @@
 
 #include <pthread.h>
 
+#include <stddef.h>
+
 #include "icommand.h"
 #include "iblockingqueue.h"
 
@@ -12,9 +14,9 @@ struct _ThreadPool
 {
 	int isStop;
 	int threadCount;
-	pthread_t *tids;
+	pthread_t* tids;
 	size_t tidSize;
-	IBlockingQueue *iblockingQueue;
+	IBlockingQueue* iblockingQueue;
 
 	void (*setThreadCount)(ThreadPool*, int);
 	void (*start)(ThreadPool*);

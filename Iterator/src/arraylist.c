@@ -16,19 +16,19 @@ static IIterator* ArrayList_iterator(IList*);
 static int ArrayList_get(ArrayList*, size_t);
 static void ArrayList_resize(ArrayList*, size_t);
 
-ArrayList* constructArrayList(void *addr, size_t size)
+ArrayList* constructArrayList(void* addr, size_t size)
 {
-	if(addr == NULL)
+	if (addr == NULL)
 	{
 		return NULL;
 	}
 
-	if(size <= 0)
+	if (size <= 0)
 	{
 		size = 1;
 	}
 
-	ArrayList *arrayList = addr;
+	ArrayList* arrayList = addr;
 	arrayList->capacity = 0;
 	arrayList->size = size;
 
@@ -44,58 +44,58 @@ ArrayList* constructArrayList(void *addr, size_t size)
 	return arrayList;
 }
 
-void destructArrayList(ArrayList *arrayList)
+void destructArrayList(ArrayList* arrayList)
 {
 	free(arrayList->data);
 }
 
-void ArrayList_push(IList *ilist, int elem)
+void ArrayList_push(IList* ilist, int elem)
 {
-	ArrayList *arrayList = container_of(ilist, ArrayList, ilist);
-	if(arrayList->capacity == arrayList->size)
+	ArrayList* arrayList = container_of(ilist, ArrayList, ilist);
+	if (arrayList->capacity == arrayList->size)
 	{
 		ArrayList_resize(arrayList, arrayList->size << 1);
 	}
 	arrayList->data[arrayList->capacity++] = elem;
 }
 
-int ArrayList_pop(IList *ilist)
+int ArrayList_pop(IList* ilist)
 {
-	ArrayList *arrayList = container_of(ilist, ArrayList, ilist);
+	ArrayList* arrayList = container_of(ilist, ArrayList, ilist);
 	return arrayList->data[--arrayList->capacity];
 }
 
-size_t ArrayList_count(IList *ilist)
+size_t ArrayList_count(IList* ilist)
 {
-	ArrayList *arrayList = container_of(ilist, ArrayList, ilist);
+	ArrayList* arrayList = container_of(ilist, ArrayList, ilist);
 	return arrayList->capacity;
 }
 
-int ArrayList_empty(IList *ilist)
+int ArrayList_empty(IList* ilist)
 {
-	ArrayList *arrayList = container_of(ilist, ArrayList, ilist);
+	ArrayList* arrayList = container_of(ilist, ArrayList, ilist);
 	return arrayList->capacity == 0;
 }
 
-IIterator* ArrayList_iterator(IList *ilist)
+IIterator* ArrayList_iterator(IList* ilist)
 {
-	ArrayList *arrayList = container_of(ilist, ArrayList, ilist);
-	return &new(ArrayListIterator, arrayList)->iiterator;
+	ArrayList* arrayList = container_of(ilist, ArrayList, ilist);
+	return &new (ArrayListIterator, arrayList)->iiterator;
 }
 
-int ArrayList_get(ArrayList *arrayList, size_t index)
+int ArrayList_get(ArrayList* arrayList, size_t index)
 {
 	return arrayList->data[index];
 }
 
-void ArrayList_resize(ArrayList *arrayList, size_t size)
+void ArrayList_resize(ArrayList* arrayList, size_t size)
 {
-	if(size <= arrayList->size)
+	if (size <= arrayList->size)
 	{
 		return;
 	}
 
-	int *data = (int*)malloc(sizeof(int) * size);
+	int* data = (int*)malloc(sizeof(int) * size);
 
 	memcpy(data, arrayList->data, arrayList->size * sizeof(int));
 	free(arrayList->data);

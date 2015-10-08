@@ -1,4 +1,4 @@
-#include <stdio.h> 
+#include <stdio.h>
 #include "base.h"
 #include "icommand.h"
 #include "ilist.h"
@@ -9,14 +9,14 @@ static ICommand* LinkedList_pop(IList*);
 static size_t LinkedList_count(IList*);
 static int LinkedList_empty(IList*);
 
-LinkedList* constructLinkedList(void *addr)
+LinkedList* constructLinkedList(void* addr)
 {
-	if(addr == NULL)
+	if (addr == NULL)
 	{
 		return NULL;
 	}
 
-	LinkedList *linkedList = addr;
+	LinkedList* linkedList = addr;
 	linkedList->head == NULL;
 
 	linkedList->push = LinkedList_push;
@@ -27,10 +27,10 @@ LinkedList* constructLinkedList(void *addr)
 	return linkedList;
 }
 
-void destructLinkedList(LinkedList *linkedList)
+void destructLinkedList(LinkedList* linkedList)
 {
-	LinkedListNode *tmp = linkedList->head;
-	while(linkedList->head != NULL)
+	LinkedListNode* tmp = linkedList->head;
+	while (linkedList->head != NULL)
 	{
 		linkedList->head = tmp->next;
 		free(tmp);
@@ -38,12 +38,12 @@ void destructLinkedList(LinkedList *linkedList)
 	}
 }
 
-void LinkedList_push(IList *ilist, ICommand *command)
+void LinkedList_push(IList* ilist, ICommand* command)
 {
-	LinkedList *linkedList = container_of(ilist, LinkedList, ilist);
+	LinkedList* linkedList = container_of(ilist, LinkedList, ilist);
 
-	LinkedListNode *node = malloc(sizeof(LinkedListNode));
-	if(node == NULL)
+	LinkedListNode* node = malloc(sizeof(LinkedListNode));
+	if (node == NULL)
 	{
 		return;
 	}
@@ -51,8 +51,8 @@ void LinkedList_push(IList *ilist, ICommand *command)
 	node->command = command;
 	node->next = NULL;
 
-	LinkedListNode **nodePtr = &linkedList->head;
-	while(*nodePtr != NULL)
+	LinkedListNode** nodePtr = &linkedList->head;
+	while (*nodePtr != NULL)
 	{
 		nodePtr = &(*nodePtr)->next;
 	}
@@ -60,39 +60,39 @@ void LinkedList_push(IList *ilist, ICommand *command)
 	*nodePtr = node;
 }
 
-ICommand* LinkedList_pop(IList *ilist)
+ICommand* LinkedList_pop(IList* ilist)
 {
-	LinkedList *linkedList = container_of(ilist, LinkedList, ilist);
+	LinkedList* linkedList = container_of(ilist, LinkedList, ilist);
 
-	if(linkedList->head == NULL)
+	if (linkedList->head == NULL)
 	{
 		return NULL;
 	}
 
-	LinkedListNode *tmp = linkedList->head;
+	LinkedListNode* tmp = linkedList->head;
 	linkedList->head = tmp->next;
 	tmp->next = NULL;
 
 	return tmp->command;
 }
 
-size_t LinkedList_count(IList *ilist)
+size_t LinkedList_count(IList* ilist)
 {
-	LinkedList *linkedList = container_of(ilist, LinkedList, ilist);
+	LinkedList* linkedList = container_of(ilist, LinkedList, ilist);
 
 	size_t count = 0;
-	LinkedListNode *tmp = linkedList->head;
-	while(tmp != NULL)
+	LinkedListNode* tmp = linkedList->head;
+	while (tmp != NULL)
 	{
 		++count;
 		tmp = tmp->next;
 	}
-	
+
 	return count;
 }
 
-int LinkedList_empty(IList *ilist)
+int LinkedList_empty(IList* ilist)
 {
-	LinkedList *linkedList = container_of(ilist, LinkedList, ilist);
+	LinkedList* linkedList = container_of(ilist, LinkedList, ilist);
 	return linkedList->head == NULL;
 }

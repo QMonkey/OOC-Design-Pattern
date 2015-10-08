@@ -9,7 +9,7 @@ typedef struct _LinkedListNode LinkedListNode;
 
 struct _LinkedList
 {
-	LinkedListNode *head;
+	LinkedListNode* head;
 
 	union
 	{
@@ -20,8 +20,8 @@ struct _LinkedList
 
 struct _LinkedListNode
 {
-	ICommand *command;
-	LinkedListNode *next;
+	ICommand* command;
+	LinkedListNode* next;
 };
 
 extern LinkedList* constructLinkedList(void*);

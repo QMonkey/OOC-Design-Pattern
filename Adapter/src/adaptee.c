@@ -5,38 +5,38 @@
 
 static long Adaptee_power(IAdaptee*, int, int);
 
-Adaptee* constructAdaptee(void *addr)
+Adaptee* constructAdaptee(void* addr)
 {
-	if(addr == NULL)
+	if (addr == NULL)
 	{
 		return NULL;
 	}
 
-	Adaptee *adaptee = addr;
+	Adaptee* adaptee = addr;
 	adaptee->power = Adaptee_power;
 
 	return adaptee;
 }
 
-void destructAdaptee(Adaptee *adaptee)
+void destructAdaptee(Adaptee* adaptee)
 {
 }
 
-long Adaptee_power(IAdaptee *iadaptee, int base, int exp)
+long Adaptee_power(IAdaptee* iadaptee, int base, int exp)
 {
-	if(exp < 0)
+	if (exp < 0)
 	{
 		fprintf(stderr, "Do not support negative exponent.\n");
 		return -1;
 	}
 
-	if(exp == 0)
+	if (exp == 0)
 	{
 		return 1;
 	}
 
 	long sum = 1;
-	while(exp--)
+	while (exp--)
 	{
 		sum *= base;
 	}

@@ -8,7 +8,7 @@ typedef struct _LinkedQueue LinkedQueue;
 
 struct _LinkedQueue
 {
-	IList *list;
+	IList* list;
 
 	union
 	{

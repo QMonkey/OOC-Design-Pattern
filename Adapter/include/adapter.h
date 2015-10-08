@@ -8,7 +8,7 @@ typedef struct _Adapter Adapter;
 
 struct _Adapter
 {
-	IAdaptee *adaptee;
+	IAdaptee* adaptee;
 
 	void (*setAdaptee)(Adapter*, IAdaptee*);
 	union

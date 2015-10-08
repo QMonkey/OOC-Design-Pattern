@@ -6,25 +6,25 @@
 
 static void TrainStrategy_travel(ITravelStrategy*);
 
-TrainStrategy* constructTrainStrategy(void *addr)
+TrainStrategy* constructTrainStrategy(void* addr)
 {
-	if(addr == NULL)
+	if (addr == NULL)
 	{
 		return NULL;
 	}
 
-	TrainStrategy *trainStrategy = addr;
+	TrainStrategy* trainStrategy = addr;
 
 	trainStrategy->travel = TrainStrategy_travel;
 
 	return trainStrategy;
 }
 
-void destructTrainStrategy(TrainStrategy *trainStrategy)
+void destructTrainStrategy(TrainStrategy* trainStrategy)
 {
 }
 
-void TrainStrategy_travel(ITravelStrategy *itravelStrategy)
+void TrainStrategy_travel(ITravelStrategy* itravelStrategy)
 {
 	printf("Travel by train.\n");
 }
