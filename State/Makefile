@@ -4,7 +4,7 @@ LIBPATH = ../lib/include
 INCLUDEPATH = include
 SRCPATH=src
 CC = gcc
-OPTIONS = -fms-extensions
+OPTIONS = -Wall -fms-extensions
 
 EXEC = $(EXECPATH)/State
 OBJS = $(OBJPATH)/qrcode_state_machine.o $(OBJPATH)/abstract_qrcode_state.o $(OBJPATH)/noqrcode_state.o $(OBJPATH)/qrcode_valid_state.o $(OBJPATH)/qrcode_authorizing_state.o $(OBJPATH)/qrcode_authorized_state.o $(OBJPATH)/main.o

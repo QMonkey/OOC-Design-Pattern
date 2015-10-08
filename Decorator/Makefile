@@ -4,7 +4,7 @@ INCLUDEPATH = include
 LIBPATH = ../lib/include
 SRCPATH = src
 CC = gcc
-OPTIONS = -fms-extensions
+OPTIONS = -Wall -fms-extensions
 
 EXEC = $(EXECPATH)/Decorator
 OBJS = $(OBJPATH)/window.o $(OBJPATH)/border_decorator.o $(OBJPATH)/main.o

@@ -4,7 +4,7 @@ INCLUDEPATH = include
 LIBPATH = ../lib/include
 SRCPATH = src
 CC = gcc
-OPTIONS = -fms-extensions
+OPTIONS = -Wall -fms-extensions
 
 EXEC = $(EXECPATH)/Adapter
 OBJS = $(OBJPATH)/target.o $(OBJPATH)/adaptee.o $(OBJPATH)/adapter.o $(OBJPATH)/main.o

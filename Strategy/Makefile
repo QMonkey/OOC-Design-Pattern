@@ -4,7 +4,7 @@ INCLUDEPATH = include
 LIBPATH = ../lib/include
 SRCPATH = src
 CC = gcc
-OPTIONS = -fms-extensions
+OPTIONS = -Wall -fms-extensions
 
 EXEC = $(EXECPATH)/Strategy
 OBJS = $(OBJPATH)/person.o $(OBJPATH)/airplane_strategy.o $(OBJPATH)/train_strategy.o $(OBJPATH)/main.o

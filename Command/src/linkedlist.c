@@ -17,7 +17,7 @@ LinkedList* constructLinkedList(void* addr)
 	}
 
 	LinkedList* linkedList = addr;
-	linkedList->head == NULL;
+	linkedList->head = NULL;
 
 	linkedList->push = LinkedList_push;
 	linkedList->pop = LinkedList_pop;

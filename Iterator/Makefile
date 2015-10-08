@@ -4,7 +4,7 @@ INCLUDEPATH = include
 LIBPATH = ../lib/include
 SRCPATH = src
 CC = gcc
-OPTIONS = -fms-extensions
+OPTIONS = -Wall -fms-extensions
 
 EXEC = $(EXECPATH)/Iterator
 OBJS = $(OBJPATH)/arraylist.o $(OBJPATH)/linkedlist.o $(OBJPATH)/arraylist_iterator.o $(OBJPATH)/linkedlist_iterator.o $(OBJPATH)/main.o

@@ -50,6 +50,7 @@ ThreadPool* constructThreadPool(void* addr, int threadCount)
 	threadPool->start = ThreadPool_start;
 	threadPool->stop = ThreadPool_stop;
 	threadPool->execute = ThreadPool_execute;
+	threadPool->setThreadCount = ThreadPool_setThreadCount;
 
 	return threadPool;
 }
@@ -75,6 +76,8 @@ void* ThreadPool_run(void* arg)
 		    &threadPool->iblockingQueue->iqueue);
 		command->execute(command);
 	}
+
+	return NULL;
 }
 
 void ThreadPool_start(ThreadPool* threadPool)

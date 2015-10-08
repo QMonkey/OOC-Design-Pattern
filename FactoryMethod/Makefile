@@ -4,7 +4,7 @@ INCLUDEPATH = include
 LIBPATH = ../lib/include
 SRCPATH = src
 CC = gcc
-OPTIONS = -fms-extensions
+OPTIONS = -Wall -fms-extensions
 
 EXEC = $(EXECPATH)/FactoryMethod
 OBJS = $(OBJPATH)/linux_widget_factory.o $(OBJPATH)/mac_widget_factory.o $(OBJPATH)/windows_widget_factory.o $(OBJPATH)/linux_widget.o $(OBJPATH)/mac_widget.o $(OBJPATH)/windows_widget.o $(OBJPATH)/main.o

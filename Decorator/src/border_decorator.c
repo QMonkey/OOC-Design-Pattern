@@ -18,6 +18,7 @@ BorderDecorator* constructBorderDecorator(void* addr, IWindow* window)
 	borderDecorator->window = window;
 
 	borderDecorator->draw = BorderDecorator_draw;
+	borderDecorator->setWindow = BorderDecorator_setWindow;
 
 	return borderDecorator;
 }
