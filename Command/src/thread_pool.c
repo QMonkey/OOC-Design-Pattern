@@ -41,8 +41,8 @@ ThreadPool* constructThreadPool(void* addr, int threadCount)
 	threadPool->tids = NULL;
 	threadPool->tidSize = 0;
 
-	threadPool->iblockingQueue = &new (LinkedBlockingQueue)->iblockingQueue;
-	if (threadPool->iblockingQueue == NULL)
+	threadPool->blockingQueue = &new (LinkedBlockingQueue)->iblockingQueue;
+	if (threadPool->blockingQueue == NULL)
 	{
 		return NULL;
 	}
@@ -58,7 +58,7 @@ ThreadPool* constructThreadPool(void* addr, int threadCount)
 void destructThreadPool(ThreadPool* threadPool)
 {
 	LinkedBlockingQueue* linkedBlockingQueue = container_of(
-	    threadPool->iblockingQueue, LinkedBlockingQueue, iblockingQueue);
+	    threadPool->blockingQueue, LinkedBlockingQueue, iblockingQueue);
 	delete (LinkedBlockingQueue, linkedBlockingQueue);
 }
 
@@ -72,8 +72,8 @@ void* ThreadPool_run(void* arg)
 	ThreadPool* threadPool = arg;
 	while (!threadPool->isStop)
 	{
-		ICommand* command = threadPool->iblockingQueue->pop(
-		    &threadPool->iblockingQueue->iqueue);
+		ICommand* command = threadPool->blockingQueue->pop(
+		    &threadPool->blockingQueue->iqueue);
 		command->execute(command);
 	}
 
@@ -127,6 +127,6 @@ void ThreadPool_stop(ThreadPool* threadPool)
 
 void ThreadPool_execute(ThreadPool* threadPool, ICommand* command)
 {
-	threadPool->iblockingQueue->push(&threadPool->iblockingQueue->iqueue,
-					 command);
+	threadPool->blockingQueue->push(&threadPool->blockingQueue->iqueue,
+					command);
 }

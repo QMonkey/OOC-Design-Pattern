@@ -16,7 +16,7 @@ struct _ThreadPool
 	int threadCount;
 	pthread_t* tids;
 	size_t tidSize;
-	IBlockingQueue* iblockingQueue;
+	IBlockingQueue* blockingQueue;
 
 	void (*setThreadCount)(ThreadPool*, int);
 	void (*start)(ThreadPool*);
