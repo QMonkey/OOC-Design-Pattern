@@ -9,7 +9,12 @@ OPTIONS = -Wall -fms-extensions
 EXEC = $(EXECPATH)/Command
 OBJS = $(OBJPATH)/linkedlist.o $(OBJPATH)/linkedqueue.o $(OBJPATH)/linked_blockingqueue.o $(OBJPATH)/thread_pool.o $(OBJPATH)/main.o
 
-all: $(OBJS) $(EXEC)
+all: dir build
+
+dir:
+	mkdir -p $(OBJPATH)
+
+build: $(OBJS) $(EXEC)
 
 $(EXEC): $(OBJS)
 	$(CC) -g -o $@ $(OBJS) -lpthread

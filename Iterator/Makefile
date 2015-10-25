@@ -9,7 +9,12 @@ OPTIONS = -Wall -fms-extensions
 EXEC = $(EXECPATH)/Iterator
 OBJS = $(OBJPATH)/arraylist.o $(OBJPATH)/linkedlist.o $(OBJPATH)/arraylist_iterator.o $(OBJPATH)/linkedlist_iterator.o $(OBJPATH)/main.o
 
-all: $(OBJS) $(EXEC)
+all: dir build
+
+dir:
+	mkdir -p $(OBJPATH)
+
+build: $(OBJS) $(EXEC)
 
 $(EXEC): $(OBJS)
 	$(CC) -g -o $@ $(OBJS)

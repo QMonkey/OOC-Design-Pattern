@@ -9,7 +9,12 @@ OPTIONS = -Wall -fms-extensions
 EXEC = $(EXECPATH)/Composite
 OBJS = $(OBJPATH)/abstract_file.o $(OBJPATH)/regular.o $(OBJPATH)/directory.o $(OBJPATH)/main.o
 
-all: $(OBJS) $(EXEC)
+all: dir build
+
+dir:
+	mkdir -p $(OBJPATH)
+
+build: $(OBJS) $(EXEC)
 
 $(EXEC): $(OBJS)
 	$(CC) -g -o $@ $(OBJS)

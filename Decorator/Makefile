@@ -9,7 +9,12 @@ OPTIONS = -Wall -fms-extensions
 EXEC = $(EXECPATH)/Decorator
 OBJS = $(OBJPATH)/window.o $(OBJPATH)/border_decorator.o $(OBJPATH)/main.o
 
-all: $(OBJS) $(EXEC)
+all: dir build
+
+dir:
+	mkdir -p $(OBJPATH)
+
+build: $(OBJS) $(EXEC)
 
 $(EXEC): $(OBJS)
 	$(CC) -g -o $@ $(OBJS)

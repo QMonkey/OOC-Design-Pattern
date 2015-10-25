@@ -9,7 +9,12 @@ OPTIONS = -Wall -fms-extensions
 EXEC = $(EXECPATH)/TemplateMethod
 OBJS = $(OBJPATH)/abstract_game.o $(OBJPATH)/dota2.o $(OBJPATH)/chess.o $(OBJPATH)/main.o
 
-all: $(OBJS) $(EXEC)
+all: dir build
+
+dir:
+	mkdir -p $(OBJPATH)
+
+build: $(OBJS) $(EXEC)
 
 $(EXEC): $(OBJS)
 	$(CC) -g -o $@ $(OBJS)

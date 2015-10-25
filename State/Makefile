@@ -9,7 +9,12 @@ OPTIONS = -Wall -fms-extensions
 EXEC = $(EXECPATH)/State
 OBJS = $(OBJPATH)/qrcode_state_machine.o $(OBJPATH)/abstract_qrcode_state.o $(OBJPATH)/noqrcode_state.o $(OBJPATH)/qrcode_valid_state.o $(OBJPATH)/qrcode_authorizing_state.o $(OBJPATH)/qrcode_authorized_state.o $(OBJPATH)/main.o
 
-all: $(OBJS) $(EXEC)
+all: dir build
+
+dir:
+	mkdir -p $(OBJPATH)
+
+build: $(OBJS) $(EXEC)
 
 $(EXEC): $(OBJS)
 	$(CC) -g -o $@ $(OBJS)

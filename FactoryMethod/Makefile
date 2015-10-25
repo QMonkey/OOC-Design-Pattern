@@ -9,7 +9,12 @@ OPTIONS = -Wall -fms-extensions
 EXEC = $(EXECPATH)/FactoryMethod
 OBJS = $(OBJPATH)/linux_widget_factory.o $(OBJPATH)/mac_widget_factory.o $(OBJPATH)/windows_widget_factory.o $(OBJPATH)/linux_widget.o $(OBJPATH)/mac_widget.o $(OBJPATH)/windows_widget.o $(OBJPATH)/main.o
 
-all: $(OBJS) $(EXEC)
+all: dir build
+
+dir:
+	mkdir -p $(OBJPATH)
+
+build: $(OBJS) $(EXEC)
 
 $(EXEC): $(OBJS)
 	$(CC) -g -o $@ $(OBJS)
