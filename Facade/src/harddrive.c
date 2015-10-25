@@ -4,7 +4,7 @@
 
 static void HardDrive_read(HardDrive*, long);
 
-HardDrive* constructHardDrive(void* addr)
+HardDrive* HardDrive_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -17,7 +17,7 @@ HardDrive* constructHardDrive(void* addr)
 	return harddrive;
 }
 
-void destructHardDrive(HardDrive* harddrive)
+void HardDrive_destruct(HardDrive* harddrive)
 {
 }
 

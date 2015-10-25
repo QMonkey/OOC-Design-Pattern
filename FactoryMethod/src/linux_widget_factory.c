@@ -8,7 +8,7 @@
 
 static IWidget* LinuxWidgetFactory_createWidget(IFactory*);
 
-LinuxWidgetFactory* constructLinuxWidgetFactory(void* addr)
+LinuxWidgetFactory* LinuxWidgetFactory_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -21,7 +21,7 @@ LinuxWidgetFactory* constructLinuxWidgetFactory(void* addr)
 	return linuxWidgetFactory;
 }
 
-void destructLinuxWidgetFactory(LinuxWidgetFactory* linuxWidgetFactory)
+void LinuxWidgetFactory_destruct(LinuxWidgetFactory* linuxWidgetFactory)
 {
 }
 

@@ -14,7 +14,7 @@ struct _MacFactory
 	};
 };
 
-extern MacFactory* constructMacFactory(void*);
-extern void destructMacFactory(MacFactory*);
+extern MacFactory* MacFactory_construct(void*);
+extern void MacFactory_destruct(MacFactory*);
 
 #endif

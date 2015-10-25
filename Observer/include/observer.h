@@ -14,7 +14,7 @@ struct _Observer
 	};
 };
 
-extern Observer* constructObserver(void*);
-extern void destructObserver(Observer*);
+extern Observer* Observer_construct(void*);
+extern void Observer_destruct(Observer*);
 
 #endif

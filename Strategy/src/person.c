@@ -7,7 +7,7 @@
 static void Person_setTravelStrategy(Person*, ITravelStrategy*);
 static void Person_travel(Person*);
 
-Person* constructPerson(void* addr, ITravelStrategy* travelStrategy)
+Person* Person_construct(void* addr, ITravelStrategy* travelStrategy)
 {
 	if (addr == NULL)
 	{
@@ -23,7 +23,7 @@ Person* constructPerson(void* addr, ITravelStrategy* travelStrategy)
 	return person;
 }
 
-void destructPerson(Person* person)
+void Person_destruct(Person* person)
 {
 }
 

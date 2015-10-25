@@ -20,7 +20,7 @@ struct _Observed
 	};
 };
 
-extern Observed* constructObserved(void*);
-extern void destructObserved(Observed*);
+extern Observed* Observed_construct(void*);
+extern void Observed_destruct(Observed*);
 
 #endif

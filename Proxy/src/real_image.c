@@ -6,7 +6,7 @@
 static void RealImage_load(RealImage*);
 static void RealImage_display(IImage*);
 
-RealImage* constructRealImage(void* addr)
+RealImage* RealImage_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -23,7 +23,7 @@ RealImage* constructRealImage(void* addr)
 	return realImage;
 }
 
-void destructRealImage(RealImage* realImage)
+void RealImage_destruct(RealImage* realImage)
 {
 }
 

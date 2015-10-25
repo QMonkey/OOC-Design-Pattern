@@ -5,7 +5,7 @@
 
 static void Observer_handle(IObserver*);
 
-Observer* constructObserver(void* addr)
+Observer* Observer_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -18,7 +18,7 @@ Observer* constructObserver(void* addr)
 	return observer;
 }
 
-void destructObserver(Observer* observer)
+void Observer_destruct(Observer* observer)
 {
 }
 

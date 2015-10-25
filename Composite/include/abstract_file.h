@@ -16,7 +16,7 @@ struct _AbstractFile
 	};
 };
 
-extern void constructAbstractFile(void*);
-extern void destructAbstractFile(AbstractFile*);
+extern void AbstractFile_construct(void*);
+extern void AbstractFile_destruct(AbstractFile*);
 
 #endif

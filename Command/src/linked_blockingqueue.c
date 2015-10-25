@@ -12,7 +12,7 @@ static void LinkedBlockingQueue_push(IQueue*, ICommand*);
 static ICommand* LinkedBlockingQueue_pop(IQueue*);
 static int LinkedBlockingQueue_empty(IQueue*);
 
-LinkedBlockingQueue* constructLinkedBlockingQueue(void* addr)
+LinkedBlockingQueue* LinkedBlockingQueue_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -62,7 +62,7 @@ LinkedBlockingQueue* constructLinkedBlockingQueue(void* addr)
 	return linkedBlockingQueue;
 }
 
-void destructLinkedBlockingQueue(LinkedBlockingQueue* linkedBlockingQueue)
+void LinkedBlockingQueue_destruct(LinkedBlockingQueue* linkedBlockingQueue)
 {
 	int err = pthread_cond_destroy(&linkedBlockingQueue->cond);
 	if (err)

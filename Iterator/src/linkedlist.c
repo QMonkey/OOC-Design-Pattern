@@ -14,7 +14,7 @@ static size_t LinkedList_count(IList*);
 static int LinkedList_empty(IList*);
 static IIterator* LinkedList_iterator(IList*);
 
-LinkedList* constructLinkedList(void* addr)
+LinkedList* LinkedList_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -33,7 +33,7 @@ LinkedList* constructLinkedList(void* addr)
 	return linkedList;
 }
 
-void destructLinkedList(LinkedList* linkedList)
+void LinkedList_destruct(LinkedList* linkedList)
 {
 	ListNode* tmp = linkedList->head;
 	while (linkedList->head != NULL)

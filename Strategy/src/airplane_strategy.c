@@ -6,7 +6,7 @@
 
 static void AirplaneStrategy_travel(ITravelStrategy*);
 
-AirplaneStrategy* constructAirplaneStrategy(void* addr)
+AirplaneStrategy* AirplaneStrategy_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -20,7 +20,7 @@ AirplaneStrategy* constructAirplaneStrategy(void* addr)
 	return airplaneStrategy;
 }
 
-void destructAirplaneStrategy(AirplaneStrategy* airplaneStrategy)
+void AirplaneStrategy_destruct(AirplaneStrategy* airplaneStrategy)
 {
 }
 

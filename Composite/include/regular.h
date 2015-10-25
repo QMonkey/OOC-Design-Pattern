@@ -17,7 +17,7 @@ struct _Regular
 	};
 };
 
-extern Regular* constructRegular(void*);
-extern void destructRegular(Regular*);
+extern Regular* Regular_construct(void*);
+extern void Regular_destruct(Regular*);
 
 #endif

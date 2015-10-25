@@ -8,7 +8,7 @@
 static long Adapter_powerOf2(ITarget*, int);
 static void Adapter_setAdaptee(Adapter*, IAdaptee*);
 
-Adapter* constructAdapter(void* addr, IAdaptee* adaptee)
+Adapter* Adapter_construct(void* addr, IAdaptee* adaptee)
 {
 	if (addr == NULL)
 	{
@@ -24,7 +24,7 @@ Adapter* constructAdapter(void* addr, IAdaptee* adaptee)
 	return adapter;
 }
 
-void destructAdapter(Adapter* adapter)
+void Adapter_destruct(Adapter* adapter)
 {
 }
 

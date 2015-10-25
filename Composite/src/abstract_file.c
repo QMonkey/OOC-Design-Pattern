@@ -14,7 +14,7 @@ static char* AbstractFile_getContent(IFile*);
 static void AbstractFile_setContent(IFile*, char*);
 static void AbstractFile_unsupportOperation(IFile*);
 
-void constructAbstractFile(void* addr)
+void AbstractFile_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -33,7 +33,7 @@ void constructAbstractFile(void* addr)
 	abstractFile->setContent = AbstractFile_setContent;
 }
 
-void destructAbstractFile(AbstractFile* abstractFile)
+void AbstractFile_destruct(AbstractFile* abstractFile)
 {
 }
 

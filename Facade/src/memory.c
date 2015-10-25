@@ -4,7 +4,7 @@
 
 static void Memory_load(Memory*, long);
 
-Memory* constructMemory(void* addr)
+Memory* Memory_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -17,7 +17,7 @@ Memory* constructMemory(void* addr)
 	return memory;
 }
 
-void destructMemory(Memory* memory)
+void Memory_destruct(Memory* memory)
 {
 }
 

@@ -14,7 +14,7 @@ struct _AirplaneStrategy
 	};
 };
 
-extern AirplaneStrategy* constructAirplaneStrategy(void*);
-extern void destructAirplaneStrategy(AirplaneStrategy*);
+extern AirplaneStrategy* AirplaneStrategy_construct(void*);
+extern void AirplaneStrategy_destruct(AirplaneStrategy*);
 
 #endif

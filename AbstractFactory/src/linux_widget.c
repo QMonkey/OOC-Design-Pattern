@@ -5,7 +5,7 @@
 
 static void LinuxWidget_show(IWidget*);
 
-LinuxWidget* constructLinuxWidget(void* addr)
+LinuxWidget* LinuxWidget_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -18,7 +18,7 @@ LinuxWidget* constructLinuxWidget(void* addr)
 	return linuxWidget;
 }
 
-void destructLinuxWidget(LinuxWidget* linuxWidget)
+void LinuxWidget_destruct(LinuxWidget* linuxWidget)
 {
 }
 

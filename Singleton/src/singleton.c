@@ -8,12 +8,12 @@
 #include "base.h"
 #include "singleton.h"
 
-static Singleton* constructSingleton(void* addr);
+static Singleton* Singleton_construct(void* addr);
 
 static pthread_once_t once_control = PTHREAD_ONCE_INIT;
 static Singleton* singleton = NULL;
 
-Singleton* constructSingleton(void* addr)
+Singleton* Singleton_construct(void* addr)
 {
 	if (addr == NULL)
 	{

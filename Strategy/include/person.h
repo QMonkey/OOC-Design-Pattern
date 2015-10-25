@@ -13,7 +13,7 @@ struct _Person
 	void (*travel)(Person*);
 };
 
-extern Person* constructPerson(void*, ITravelStrategy*);
-extern void destructPerson(Person*);
+extern Person* Person_construct(void*, ITravelStrategy*);
+extern void Person_destruct(Person*);
 
 #endif

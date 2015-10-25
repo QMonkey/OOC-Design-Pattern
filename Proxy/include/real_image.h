@@ -15,7 +15,7 @@ struct _RealImage
 	};
 };
 
-extern RealImage* constructRealImage(void*);
-extern void destructRealImage(RealImage*);
+extern RealImage* RealImage_construct(void*);
+extern void RealImage_destruct(RealImage*);
 
 #endif

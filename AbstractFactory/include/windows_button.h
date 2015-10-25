@@ -14,7 +14,7 @@ struct _WindowsButton
 	};
 };
 
-extern WindowsButton* constructWindowsButton(void*);
-extern void destructWindowsButton(WindowsButton*);
+extern WindowsButton* WindowsButton_construct(void*);
+extern void WindowsButton_destruct(WindowsButton*);
 
 #endif

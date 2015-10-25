@@ -8,7 +8,7 @@
 
 static IWidget* MacWidgetFactory_createWidget(IFactory*);
 
-MacWidgetFactory* constructMacWidgetFactory(void* addr)
+MacWidgetFactory* MacWidgetFactory_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -21,7 +21,7 @@ MacWidgetFactory* constructMacWidgetFactory(void* addr)
 	return macWidgetFactory;
 }
 
-void destructMacWidgetFactory(MacWidgetFactory* macWidgetFactory)
+void MacWidgetFactory_destruct(MacWidgetFactory* macWidgetFactory)
 {
 }
 

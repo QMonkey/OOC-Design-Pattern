@@ -6,7 +6,7 @@
 
 static void TrainStrategy_travel(ITravelStrategy*);
 
-TrainStrategy* constructTrainStrategy(void* addr)
+TrainStrategy* TrainStrategy_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -20,7 +20,7 @@ TrainStrategy* constructTrainStrategy(void* addr)
 	return trainStrategy;
 }
 
-void destructTrainStrategy(TrainStrategy* trainStrategy)
+void TrainStrategy_destruct(TrainStrategy* trainStrategy)
 {
 }
 

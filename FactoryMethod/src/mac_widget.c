@@ -5,7 +5,7 @@
 
 static void MacWidget_show(IWidget*);
 
-MacWidget* constructMacWidget(void* addr)
+MacWidget* MacWidget_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -18,7 +18,7 @@ MacWidget* constructMacWidget(void* addr)
 	return macWidget;
 }
 
-void destructMacWidget(MacWidget* macWidget)
+void MacWidget_destruct(MacWidget* macWidget)
 {
 }
 

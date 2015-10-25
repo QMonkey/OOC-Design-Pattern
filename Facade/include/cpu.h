@@ -10,7 +10,7 @@ struct _CPU
 	void (*execute)(CPU*);
 };
 
-extern CPU* constructCPU(void*);
-extern void destructCPU(CPU*);
+extern CPU* CPU_construct(void*);
+extern void CPU_destruct(CPU*);
 
 #endif

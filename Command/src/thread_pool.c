@@ -28,7 +28,7 @@ static struct
 	};
 } stopCommand = {.execute = ThreadPool_doNothing};
 
-ThreadPool* constructThreadPool(void* addr, int threadCount)
+ThreadPool* ThreadPool_construct(void* addr, int threadCount)
 {
 	if (addr == NULL)
 	{
@@ -55,7 +55,7 @@ ThreadPool* constructThreadPool(void* addr, int threadCount)
 	return threadPool;
 }
 
-void destructThreadPool(ThreadPool* threadPool)
+void ThreadPool_destruct(ThreadPool* threadPool)
 {
 	LinkedBlockingQueue* linkedBlockingQueue = container_of(
 	    threadPool->blockingQueue, LinkedBlockingQueue, iblockingQueue);

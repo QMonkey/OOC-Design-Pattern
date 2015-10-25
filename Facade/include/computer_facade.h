@@ -16,7 +16,7 @@ struct _ComputerFacade
 	void (*start)(ComputerFacade*);
 };
 
-extern ComputerFacade* constructComputerFacade(void*);
-extern void destructComputerFacade(ComputerFacade*);
+extern ComputerFacade* ComputerFacade_construct(void*);
+extern void ComputerFacade_destruct(ComputerFacade*);
 
 #endif

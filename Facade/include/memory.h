@@ -8,7 +8,7 @@ struct _Memory
 	void (*load)(Memory*, long);
 };
 
-extern Memory* constructMemory(void*);
-extern void destructMemory(Memory*);
+extern Memory* Memory_construct(void*);
+extern void Memory_destruct(Memory*);
 
 #endif

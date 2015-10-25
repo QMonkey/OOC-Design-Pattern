@@ -20,7 +20,7 @@ struct _LinkedBlockingQueue
 	};
 };
 
-extern LinkedBlockingQueue* constructLinkedBlockingQueue(void*);
-extern void destructLinkedBlockingQueue(LinkedBlockingQueue*);
+extern LinkedBlockingQueue* LinkedBlockingQueue_construct(void*);
+extern void LinkedBlockingQueue_destruct(LinkedBlockingQueue*);
 
 #endif

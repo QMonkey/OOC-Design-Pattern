@@ -11,7 +11,7 @@
 static IWidget* LinuxFactory_createWidget(IFactory*);
 static IButton* LinuxFactory_createButton(IFactory*);
 
-LinuxFactory* constructLinuxFactory(void* addr)
+LinuxFactory* LinuxFactory_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -25,7 +25,7 @@ LinuxFactory* constructLinuxFactory(void* addr)
 	return linuxFactory;
 }
 
-void destructLinuxFactory(LinuxFactory* linuxFactory)
+void LinuxFactory_destruct(LinuxFactory* linuxFactory)
 {
 }
 

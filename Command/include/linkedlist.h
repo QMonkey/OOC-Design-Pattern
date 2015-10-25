@@ -24,7 +24,7 @@ struct _LinkedListNode
 	LinkedListNode* next;
 };
 
-extern LinkedList* constructLinkedList(void*);
-extern void destructLinkedList(LinkedList*);
+extern LinkedList* LinkedList_construct(void*);
+extern void LinkedList_destruct(LinkedList*);
 
 #endif

@@ -5,14 +5,14 @@
 
 static void AbstractQRCodeState_unsupportedOperation(IQRCodeState*);
 
-void constructAbstractQRCodeState(void *addr, QRCodeStateMachine *stateMachine)
+void AbstractQRCodeState_construct(void* addr, QRCodeStateMachine* stateMachine)
 {
-	if(addr == NULL)
+	if (addr == NULL)
 	{
 		return NULL;
 	}
 
-	AbstractQRCodeState *abstractQRCodeState = addr;
+	AbstractQRCodeState* abstractQRCodeState = addr;
 	abstractQRCodeState->stateMachine = stateMachine;
 
 	abstractQRCodeState->getQRCode = AbstractQRCodeState_unsupportedOperation;
@@ -22,11 +22,11 @@ void constructAbstractQRCodeState(void *addr, QRCodeStateMachine *stateMachine)
 	abstractQRCodeState->spend = AbstractQRCodeState_unsupportedOperation;
 }
 
-void destructAbstractQRCodeState(AbstractQRCodeState *abstractQRCodeState)
+void AbstractQRCodeState_destruct(AbstractQRCodeState* abstractQRCodeState)
 {
 }
 
-void AbstractQRCodeState_unsupportedOperation(IQRCodeState *iqrcodeState)
+void AbstractQRCodeState_unsupportedOperation(IQRCodeState* iqrcodeState)
 {
 	fprintf(stderr, "Unsupported operation in current qrcode state.\n");
 	abort();

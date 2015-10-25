@@ -24,7 +24,7 @@ struct _ThreadPool
 	void (*execute)(ThreadPool*, ICommand*);
 };
 
-extern ThreadPool* constructThreadPool(void*, int);
-extern void destructThreadPool(ThreadPool*);
+extern ThreadPool* ThreadPool_construct(void*, int);
+extern void ThreadPool_destruct(ThreadPool*);
 
 #endif

@@ -14,7 +14,7 @@ struct _LinuxButton
 	};
 };
 
-extern LinuxButton* constructLinuxButton(void*);
-extern void destructLinuxButton(LinuxButton*);
+extern LinuxButton* LinuxButton_construct(void*);
+extern void LinuxButton_destruct(LinuxButton*);
 
 #endif

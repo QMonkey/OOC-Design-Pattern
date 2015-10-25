@@ -7,7 +7,7 @@
 static void Chess_initialize(IGame*);
 static void Chess_end(IGame*);
 
-Chess* constructChess(void* addr)
+Chess* Chess_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -16,14 +16,14 @@ Chess* constructChess(void* addr)
 
 	Chess* chess = addr;
 
-	constructAbstractGame(&chess->abstractGame);
+	AbstractGame_construct(&chess->abstractGame);
 	chess->initialize = Chess_initialize;
 	chess->end = Chess_end;
 
 	return chess;
 }
 
-void destructChess(Chess* chess)
+void Chess_destruct(Chess* chess)
 {
 }
 

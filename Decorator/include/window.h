@@ -17,7 +17,7 @@ struct _Window
 	};
 };
 
-extern Window* constructWindow(void*, int, int);
-extern void destructWindow(Window*);
+extern Window* Window_construct(void*, int, int);
+extern void Window_destruct(Window*);
 
 #endif

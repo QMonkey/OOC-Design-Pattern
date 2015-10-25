@@ -9,7 +9,7 @@ static ICommand* LinkedList_pop(IList*);
 static size_t LinkedList_count(IList*);
 static int LinkedList_empty(IList*);
 
-LinkedList* constructLinkedList(void* addr)
+LinkedList* LinkedList_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -27,7 +27,7 @@ LinkedList* constructLinkedList(void* addr)
 	return linkedList;
 }
 
-void destructLinkedList(LinkedList* linkedList)
+void LinkedList_destruct(LinkedList* linkedList)
 {
 	LinkedListNode* tmp = linkedList->head;
 	while (linkedList->head != NULL)

@@ -9,7 +9,7 @@
 
 static void ComputerFacade_start(ComputerFacade*);
 
-ComputerFacade* constructComputerFacade(void* addr)
+ComputerFacade* ComputerFacade_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -26,7 +26,7 @@ ComputerFacade* constructComputerFacade(void* addr)
 	return computerFacade;
 }
 
-void destructComputerFacade(ComputerFacade* computerFacade)
+void ComputerFacade_destruct(ComputerFacade* computerFacade)
 {
 	delete (CPU, computerFacade->cpu);
 	delete (Memory, computerFacade->memory);

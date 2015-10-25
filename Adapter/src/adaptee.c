@@ -5,7 +5,7 @@
 
 static long Adaptee_power(IAdaptee*, int, int);
 
-Adaptee* constructAdaptee(void* addr)
+Adaptee* Adaptee_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -18,7 +18,7 @@ Adaptee* constructAdaptee(void* addr)
 	return adaptee;
 }
 
-void destructAdaptee(Adaptee* adaptee)
+void Adaptee_destruct(Adaptee* adaptee)
 {
 }
 

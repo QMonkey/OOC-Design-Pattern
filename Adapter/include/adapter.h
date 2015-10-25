@@ -18,7 +18,7 @@ struct _Adapter
 	};
 };
 
-extern Adapter* constructAdapter(void*, IAdaptee*);
-extern void destructAdapter(Adapter*);
+extern Adapter* Adapter_construct(void*, IAdaptee*);
+extern void Adapter_destruct(Adapter*);
 
 #endif

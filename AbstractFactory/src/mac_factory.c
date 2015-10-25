@@ -11,7 +11,7 @@
 static IWidget* MacFactory_createWidget(IFactory*);
 static IButton* MacFactory_createButton(IFactory*);
 
-MacFactory* constructMacFactory(void* addr)
+MacFactory* MacFactory_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -25,7 +25,7 @@ MacFactory* constructMacFactory(void* addr)
 	return macFactory;
 }
 
-void destructMacFactory(MacFactory* macFactory)
+void MacFactory_destruct(MacFactory* macFactory)
 {
 }
 

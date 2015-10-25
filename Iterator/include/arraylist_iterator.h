@@ -18,7 +18,7 @@ struct _ArrayListIterator
 	};
 };
 
-extern ArrayListIterator* constructArrayListIterator(void*, ArrayList*);
-extern void destructArrayListIterator(ArrayListIterator*);
+extern ArrayListIterator* ArrayListIterator_construct(void*, ArrayList*);
+extern void ArrayListIterator_destruct(ArrayListIterator*);
 
 #endif

@@ -5,7 +5,7 @@
 
 static void LinuxButton_click(IButton*);
 
-LinuxButton* constructLinuxButton(void* addr)
+LinuxButton* LinuxButton_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -18,7 +18,7 @@ LinuxButton* constructLinuxButton(void* addr)
 	return linuxButton;
 }
 
-void destructLinuxButton(LinuxButton* linuxButton)
+void LinuxButton_destruct(LinuxButton* linuxButton)
 {
 }
 

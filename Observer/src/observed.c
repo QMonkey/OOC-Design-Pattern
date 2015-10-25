@@ -9,7 +9,7 @@ static void Observed_registerObserver(IObserved*, IObserver*);
 static void Observed_notifyObservers(IObserved*);
 static void Observed_removeObserver(IObserved*, IObserver*);
 
-Observed* constructObserved(void* addr)
+Observed* Observed_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -28,7 +28,7 @@ Observed* constructObserved(void* addr)
 	return observed;
 }
 
-void destructObserved(Observed* observed)
+void Observed_destruct(Observed* observed)
 {
 	free(observed->observers);
 }

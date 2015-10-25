@@ -8,7 +8,7 @@
 
 static IWidget* WindowsWidgetFactory_createWidget(IFactory*);
 
-WindowsWidgetFactory* constructWindowsWidgetFactory(void* addr)
+WindowsWidgetFactory* WindowsWidgetFactory_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -21,7 +21,7 @@ WindowsWidgetFactory* constructWindowsWidgetFactory(void* addr)
 	return windowsWidgetFactory;
 }
 
-void destructWindowsWidgetFactory(WindowsWidgetFactory* windowsWidgetFactory)
+void WindowsWidgetFactory_destruct(WindowsWidgetFactory* windowsWidgetFactory)
 {
 }
 

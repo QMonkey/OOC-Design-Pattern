@@ -17,7 +17,7 @@ struct _AbstractGame
 	};
 };
 
-extern void constructAbstractGame(void*);
-extern void destructAbstractGame(AbstractGame*);
+extern void AbstractGame_construct(void*);
+extern void AbstractGame_destruct(AbstractGame*);
 
 #endif

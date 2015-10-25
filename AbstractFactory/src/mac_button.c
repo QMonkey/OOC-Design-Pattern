@@ -5,7 +5,7 @@
 
 static void MacButton_click(IButton*);
 
-MacButton* constructMacButton(void* addr)
+MacButton* MacButton_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -18,7 +18,7 @@ MacButton* constructMacButton(void* addr)
 	return macButton;
 }
 
-void destructMacButton(MacButton* macButton)
+void MacButton_destruct(MacButton* macButton)
 {
 }
 

@@ -6,7 +6,7 @@
 
 static void Window_draw(IWindow*);
 
-Window* constructWindow(void* addr, int height, int width)
+Window* Window_construct(void* addr, int height, int width)
 {
 	if (addr == NULL)
 	{
@@ -22,7 +22,7 @@ Window* constructWindow(void* addr, int height, int width)
 	return window;
 }
 
-void destructWindow(Window* window)
+void Window_destruct(Window* window)
 {
 }
 

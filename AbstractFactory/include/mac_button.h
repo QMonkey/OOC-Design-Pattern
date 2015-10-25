@@ -14,7 +14,7 @@ struct _MacButton
 	};
 };
 
-extern MacButton* constructMacButton(void*);
-extern void destructMacButton(MacButton*);
+extern MacButton* MacButton_construct(void*);
+extern void MacButton_destruct(MacButton*);
 
 #endif

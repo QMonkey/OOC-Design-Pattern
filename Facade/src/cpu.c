@@ -6,7 +6,7 @@ static void CPU_freeze(CPU*);
 static void CPU_jump(CPU*, long);
 static void CPU_execute(CPU*);
 
-CPU* constructCPU(void* addr)
+CPU* CPU_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -22,7 +22,7 @@ CPU* constructCPU(void* addr)
 	return cpu;
 }
 
-void destructCPU(CPU* cpu)
+void CPU_destruct(CPU* cpu)
 {
 }
 

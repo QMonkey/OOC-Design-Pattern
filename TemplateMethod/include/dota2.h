@@ -15,7 +15,7 @@ struct _Dota2
 	};
 };
 
-extern Dota2* constructDota2(void* addr);
-extern void destructDota2(Dota2*);
+extern Dota2* Dota2_construct(void* addr);
+extern void Dota2_destruct(Dota2*);
 
 #endif

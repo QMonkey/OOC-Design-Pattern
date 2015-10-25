@@ -10,7 +10,7 @@ static void LinkedQueue_push(IQueue*, ICommand*);
 static ICommand* LinkedQueue_pop(IQueue*);
 static int LinkedQueue_empty(IQueue*);
 
-LinkedQueue* constructLinkedQueue(void* addr)
+LinkedQueue* LinkedQueue_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -27,7 +27,7 @@ LinkedQueue* constructLinkedQueue(void* addr)
 	return linkedQueue;
 }
 
-void destructLinkedQueue(LinkedQueue* linkedQueue)
+void LinkedQueue_destruct(LinkedQueue* linkedQueue)
 {
 	LinkedList* linkedList =
 	    container_of(linkedQueue->list, LinkedList, ilist);

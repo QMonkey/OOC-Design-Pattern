@@ -8,7 +8,7 @@
 static int LinkedListIterator_hasNext(IIterator*);
 static int LinkedListIterator_next(IIterator*);
 
-LinkedListIterator* constructLinkedListIterator(void* addr, ListNode* node)
+LinkedListIterator* LinkedListIterator_construct(void* addr, ListNode* node)
 {
 	if (addr == NULL)
 	{
@@ -24,7 +24,7 @@ LinkedListIterator* constructLinkedListIterator(void* addr, ListNode* node)
 	return linkedListIterator;
 }
 
-void destructLinkedListIterator(LinkedListIterator* linkedListIterator)
+void LinkedListIterator_destruct(LinkedListIterator* linkedListIterator)
 {
 }
 

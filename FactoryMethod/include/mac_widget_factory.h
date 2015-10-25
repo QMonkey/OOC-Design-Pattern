@@ -14,7 +14,7 @@ struct _MacWidgetFactory
 	};
 };
 
-extern MacWidgetFactory* constructMacWidgetFactory(void*);
-extern void destructMacWidgetFactory(MacWidgetFactory*);
+extern MacWidgetFactory* MacWidgetFactory_construct(void*);
+extern void MacWidgetFactory_destruct(MacWidgetFactory*);
 
 #endif

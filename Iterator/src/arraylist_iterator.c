@@ -8,7 +8,7 @@
 static int ArrayListIterator_hasNext(IIterator*);
 static int ArrayListIterator_next(IIterator*);
 
-ArrayListIterator* constructArrayListIterator(void* addr, ArrayList* arrayList)
+ArrayListIterator* ArrayListIterator_construct(void* addr, ArrayList* arrayList)
 {
 	if (addr == NULL)
 	{
@@ -25,7 +25,7 @@ ArrayListIterator* constructArrayListIterator(void* addr, ArrayList* arrayList)
 	return arrayListIterator;
 }
 
-void destructArrayListIterator(ArrayListIterator* arrayListIterator)
+void ArrayListIterator_destruct(ArrayListIterator* arrayListIterator)
 {
 }
 

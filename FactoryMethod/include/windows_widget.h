@@ -14,7 +14,7 @@ struct _WindowsWidget
 	};
 };
 
-extern WindowsWidget* constructWindowsWidget(void*);
-extern void destructWindowsWidget(WindowsWidget*);
+extern WindowsWidget* WindowsWidget_construct(void*);
+extern void WindowsWidget_destruct(WindowsWidget*);
 
 #endif

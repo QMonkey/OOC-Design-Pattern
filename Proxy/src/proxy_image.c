@@ -7,7 +7,7 @@
 
 static void ProxyImage_display(IImage*);
 
-extern ProxyImage* constructProxyImage(void* addr)
+extern ProxyImage* ProxyImage_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -21,7 +21,7 @@ extern ProxyImage* constructProxyImage(void* addr)
 	return proxyImage;
 }
 
-extern void destructProxyImage(ProxyImage* proxyImage)
+extern void ProxyImage_destruct(ProxyImage* proxyImage)
 {
 	delete (RealImage, container_of(proxyImage->image, RealImage, iimage));
 }

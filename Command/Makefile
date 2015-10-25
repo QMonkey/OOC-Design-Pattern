@@ -13,6 +13,7 @@ all: dir build
 
 dir:
 	mkdir -p $(OBJPATH)
+	mkdir -p $(EXECPATH)
 
 build: $(OBJS) $(EXEC)
 

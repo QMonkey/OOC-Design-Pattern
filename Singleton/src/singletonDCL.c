@@ -8,13 +8,13 @@
 #include "base.h"
 #include "singleton.h"
 
-static Singleton* constructSingleton(void* addr);
+static Singleton* Singleton_construct(void* addr);
 
 static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 static volatile int isInit = 0;
 static Singleton* singleton = NULL;
 
-Singleton* constructSingleton(void* addr)
+Singleton* Singleton_construct(void* addr)
 {
 	if (addr == NULL)
 	{

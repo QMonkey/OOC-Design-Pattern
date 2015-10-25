@@ -14,7 +14,7 @@ struct _Target
 	};
 };
 
-extern Target* constructTarget(void*);
-extern void destructTarget(Target*);
+extern Target* Target_construct(void*);
+extern void Target_destruct(Target*);
 
 #endif

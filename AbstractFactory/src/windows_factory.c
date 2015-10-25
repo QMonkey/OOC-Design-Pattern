@@ -11,7 +11,7 @@
 static IWidget* WindowsFactory_createWidget(IFactory*);
 static IButton* WindowsFactory_createButton(IFactory*);
 
-WindowsFactory* constructWindowsFactory(void* addr)
+WindowsFactory* WindowsFactory_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -25,7 +25,7 @@ WindowsFactory* constructWindowsFactory(void* addr)
 	return windowsFactory;
 }
 
-void destructWindowsFactory(WindowsFactory* windowsFactory)
+void WindowsFactory_destruct(WindowsFactory* windowsFactory)
 {
 }
 

@@ -11,7 +11,7 @@ static void AbstractGame_makePlayer(IGame*, int);
 static void AbstractGame_end(IGame*);
 static void AbstractGame_printWinner(IGame*);
 
-void constructAbstractGame(void* addr)
+void AbstractGame_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -28,7 +28,7 @@ void constructAbstractGame(void* addr)
 	abstractGame->printWinner = AbstractGame_printWinner;
 }
 
-void destructAbstractGame(AbstractGame* abstractGame)
+void AbstractGame_destruct(AbstractGame* abstractGame)
 {
 }
 

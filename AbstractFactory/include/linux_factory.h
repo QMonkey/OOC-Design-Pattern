@@ -14,7 +14,7 @@ struct _LinuxFactory
 	};
 };
 
-extern LinuxFactory* constructLinuxFactory(void*);
-extern void destructLinuxFactory(LinuxFactory*);
+extern LinuxFactory* LinuxFactory_construct(void*);
+extern void LinuxFactory_destruct(LinuxFactory*);
 
 #endif

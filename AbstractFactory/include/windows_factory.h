@@ -14,7 +14,7 @@ struct _WindowsFactory
 	};
 };
 
-extern WindowsFactory* constructWindowsFactory(void*);
-extern void destructWindowsFactory(WindowsFactory*);
+extern WindowsFactory* WindowsFactory_construct(void*);
+extern void WindowsFactory_destruct(WindowsFactory*);
 
 #endif

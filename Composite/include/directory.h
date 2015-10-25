@@ -21,7 +21,7 @@ struct _Directory
 	};
 };
 
-extern Directory* constructDirectory(void*);
-extern void destructDirectory(Directory*);
+extern Directory* Directory_construct(void*);
+extern void Directory_destruct(Directory*);
 
 #endif

@@ -5,7 +5,7 @@
 
 static long Target_powerOf2(ITarget*, int);
 
-Target* constructTarget(void* addr)
+Target* Target_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -18,7 +18,7 @@ Target* constructTarget(void* addr)
 	return target;
 }
 
-void destructTarget(Target* target)
+void Target_destruct(Target* target)
 {
 }
 

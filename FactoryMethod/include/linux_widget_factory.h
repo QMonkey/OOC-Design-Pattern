@@ -14,7 +14,7 @@ struct _LinuxWidgetFactory
 	};
 };
 
-extern LinuxWidgetFactory* constructLinuxWidgetFactory(void*);
-extern void destructLinuxWidgetFactory(LinuxWidgetFactory*);
+extern LinuxWidgetFactory* LinuxWidgetFactory_construct(void*);
+extern void LinuxWidgetFactory_destruct(LinuxWidgetFactory*);
 
 #endif

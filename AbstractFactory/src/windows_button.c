@@ -5,7 +5,7 @@
 
 static void WindowsButton_click(IButton*);
 
-extern WindowsButton* constructWindowsButton(void* addr)
+extern WindowsButton* WindowsButton_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -18,7 +18,7 @@ extern WindowsButton* constructWindowsButton(void* addr)
 	return windowsButton;
 }
 
-extern void destructWindowsButton(WindowsButton* windowsButon)
+extern void WindowsButton_destruct(WindowsButton* windowsButon)
 {
 }
 

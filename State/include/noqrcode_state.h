@@ -15,7 +15,7 @@ struct _NoQRCodeState
 	};
 };
 
-extern NoQRCodeState* constructNoQRCodeState(void*, QRCodeStateMachine*);
-extern void destructNoQRCodeState(NoQRCodeState*);
+extern NoQRCodeState* NoQRCodeState_construct(void*, QRCodeStateMachine*);
+extern void NoQRCodeState_destruct(NoQRCodeState*);
 
 #endif

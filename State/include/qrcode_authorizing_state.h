@@ -15,8 +15,7 @@ struct _QRCodeAuthorizingState
 	};
 };
 
-extern QRCodeAuthorizingState*
-constructQRCodeAuthorizingState(void*, QRCodeStateMachine*);
-extern void destructQRCodeAuthorizingState(QRCodeAuthorizingState*);
+extern QRCodeAuthorizingState* QRCodeAuthorizingState_construct(void*, QRCodeStateMachine*);
+extern void QRCodeAuthorizingState_destruct(QRCodeAuthorizingState*);
 
 #endif

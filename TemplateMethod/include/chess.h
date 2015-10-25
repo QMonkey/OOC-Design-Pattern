@@ -15,7 +15,7 @@ struct _Chess
 	};
 };
 
-extern Chess* constructChess(void*);
-extern void destructChess(Chess*);
+extern Chess* Chess_construct(void*);
+extern void Chess_destruct(Chess*);
 
 #endif

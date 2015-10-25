@@ -8,7 +8,7 @@ struct _HardDrive
 	void (*read)(HardDrive*, long);
 };
 
-extern HardDrive* constructHardDrive(void*);
-extern void destructHardDrive(HardDrive*);
+extern HardDrive* HardDrive_construct(void*);
+extern void HardDrive_destruct(HardDrive*);
 
 #endif

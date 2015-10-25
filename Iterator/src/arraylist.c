@@ -16,7 +16,7 @@ static IIterator* ArrayList_iterator(IList*);
 static int ArrayList_get(ArrayList*, size_t);
 static void ArrayList_resize(ArrayList*, size_t);
 
-ArrayList* constructArrayList(void* addr, size_t size)
+ArrayList* ArrayList_construct(void* addr, size_t size)
 {
 	if (addr == NULL)
 	{
@@ -44,7 +44,7 @@ ArrayList* constructArrayList(void* addr, size_t size)
 	return arrayList;
 }
 
-void destructArrayList(ArrayList* arrayList)
+void ArrayList_destruct(ArrayList* arrayList)
 {
 	free(arrayList->data);
 }

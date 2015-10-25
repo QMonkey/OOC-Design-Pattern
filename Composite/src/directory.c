@@ -11,7 +11,7 @@ static void Directory_add(IFile*, IFile*);
 static void Directory_remove(IFile*, IFile*);
 static IFile* Directory_getChild(IFile*, char*);
 
-Directory* constructDirectory(void* addr)
+Directory* Directory_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -28,7 +28,7 @@ Directory* constructDirectory(void* addr)
 	directory->count = 0;
 	directory->size = 1;
 
-	constructAbstractFile(&directory->abstractFile);
+	AbstractFile_construct(&directory->abstractFile);
 	directory->add = Directory_add;
 	directory->remove = Directory_remove;
 	directory->getChild = Directory_getChild;
@@ -36,9 +36,9 @@ Directory* constructDirectory(void* addr)
 	return directory;
 }
 
-void destructDirectory(Directory* directory)
+void Directory_destruct(Directory* directory)
 {
-	destructAbstractFile(&directory->abstractFile);
+	AbstractFile_destruct(&directory->abstractFile);
 	// TODO delete files
 }
 

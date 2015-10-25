@@ -7,7 +7,7 @@
 static void Dota2_initialize(IGame*);
 static void Dota2_end(IGame*);
 
-Dota2* constructDota2(void* addr)
+Dota2* Dota2_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -16,14 +16,14 @@ Dota2* constructDota2(void* addr)
 
 	Dota2* dota2 = addr;
 
-	constructAbstractGame(&dota2->abstractGame);
+	AbstractGame_construct(&dota2->abstractGame);
 	dota2->initialize = Dota2_initialize;
 	dota2->end = Dota2_end;
 
 	return dota2;
 }
 
-void destructDota2(Dota2* dota2)
+void Dota2_destruct(Dota2* dota2)
 {
 }
 

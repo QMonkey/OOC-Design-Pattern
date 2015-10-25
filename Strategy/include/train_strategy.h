@@ -14,7 +14,7 @@ struct _TrainStrategy
 	};
 };
 
-extern TrainStrategy* constructTrainStrategy(void*);
-extern void destructTrainStrategy(TrainStrategy*);
+extern TrainStrategy* TrainStrategy_construct(void*);
+extern void TrainStrategy_destruct(TrainStrategy*);
 
 #endif

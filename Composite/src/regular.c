@@ -8,7 +8,7 @@
 static char* Regular_getContent(IFile*);
 static void Regular_setContent(IFile*, char*);
 
-Regular* constructRegular(void* addr)
+Regular* Regular_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -18,16 +18,16 @@ Regular* constructRegular(void* addr)
 	Regular* regular = addr;
 	regular->content = NULL;
 
-	constructAbstractFile(&regular->abstractFile);
+	AbstractFile_construct(&regular->abstractFile);
 	regular->getContent = Regular_getContent;
 	regular->setContent = Regular_setContent;
 
 	return regular;
 }
 
-void destructRegular(Regular* regular)
+void Regular_destruct(Regular* regular)
 {
-	destructAbstractFile(&regular->abstractFile);
+	AbstractFile_destruct(&regular->abstractFile);
 }
 
 char* Regular_getContent(IFile* ifile)

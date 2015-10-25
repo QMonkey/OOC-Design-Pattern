@@ -29,7 +29,7 @@ struct _QRCodeStateMachine
 	};
 };
 
-extern QRCodeStateMachine* constructQRCodeStateMachine(void*);
-extern void destructQRCodeStateMachine(QRCodeStateMachine*);
+extern QRCodeStateMachine* QRCodeStateMachine_construct(void*);
+extern void QRCodeStateMachine_destruct(QRCodeStateMachine*);
 
 #endif

@@ -17,7 +17,7 @@ struct _BorderDecorator
 	};
 };
 
-extern BorderDecorator* constructBorderDecorator(void*, IWindow*);
-extern void destructBorderDecorator(BorderDecorator*);
+extern BorderDecorator* BorderDecorator_construct(void*, IWindow*);
+extern void BorderDecorator_destruct(BorderDecorator*);
 
 #endif

@@ -14,7 +14,7 @@ struct _LinuxWidget
 	};
 };
 
-extern LinuxWidget* constructLinuxWidget(void*);
-extern void destructLinuxWidget(LinuxWidget*);
+extern LinuxWidget* LinuxWidget_construct(void*);
+extern void LinuxWidget_destruct(LinuxWidget*);
 
 #endif

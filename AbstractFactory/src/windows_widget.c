@@ -5,7 +5,7 @@
 
 static void WindowsWidget_show(IWidget*);
 
-WindowsWidget* constructWindowsWidget(void* addr)
+WindowsWidget* WindowsWidget_construct(void* addr)
 {
 	if (addr == NULL)
 	{
@@ -18,7 +18,7 @@ WindowsWidget* constructWindowsWidget(void* addr)
 	return windowsWidget;
 }
 
-void destructWindowsWidget(WindowsWidget* windowsWidget)
+void WindowsWidget_destruct(WindowsWidget* windowsWidget)
 {
 }
 

@@ -14,7 +14,7 @@ struct _WindowsWidgetFactory
 	};
 };
 
-extern WindowsWidgetFactory* constructWindowsWidgetFactory(void*);
-extern void destructWindowsWidgetFactory(WindowsWidgetFactory*);
+extern WindowsWidgetFactory* WindowsWidgetFactory_construct(void*);
+extern void WindowsWidgetFactory_destruct(WindowsWidgetFactory*);
 
 #endif

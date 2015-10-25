@@ -14,7 +14,7 @@ struct _Adaptee
 	};
 };
 
-extern Adaptee* constructAdaptee(void*);
-extern void destructAdaptee(Adaptee*);
+extern Adaptee* Adaptee_construct(void*);
+extern void Adaptee_destruct(Adaptee*);
 
 #endif

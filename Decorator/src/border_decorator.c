@@ -7,7 +7,7 @@
 static void BorderDecorator_draw(IWindow*);
 static void BorderDecorator_setWindow(BorderDecorator*, IWindow*);
 
-BorderDecorator* constructBorderDecorator(void* addr, IWindow* window)
+BorderDecorator* BorderDecorator_construct(void* addr, IWindow* window)
 {
 	if (addr == NULL)
 	{
@@ -23,7 +23,7 @@ BorderDecorator* constructBorderDecorator(void* addr, IWindow* window)
 	return borderDecorator;
 }
 
-void destructBorderDecorator(BorderDecorator* borderDecorator)
+void BorderDecorator_destruct(BorderDecorator* borderDecorator)
 {
 }
 

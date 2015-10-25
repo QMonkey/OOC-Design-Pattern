@@ -15,7 +15,7 @@ struct _ProxyImage
 	};
 };
 
-extern ProxyImage* constructProxyImage(void*);
-extern void destructProxyImage(ProxyImage*);
+extern ProxyImage* ProxyImage_construct(void*);
+extern void ProxyImage_destruct(ProxyImage*);
 
 #endif

@@ -21,7 +21,7 @@ struct _ArrayList
 	};
 };
 
-extern ArrayList* constructArrayList(void*, size_t);
-extern void destructArrayList(ArrayList*);
+extern ArrayList* ArrayList_construct(void*, size_t);
+extern void ArrayList_destruct(ArrayList*);
 
 #endif

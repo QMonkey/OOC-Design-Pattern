@@ -17,7 +17,7 @@ struct _LinkedQueue
 	};
 };
 
-extern LinkedQueue* constructLinkedQueue(void*);
-extern void destructLinkedQueue(LinkedQueue*);
+extern LinkedQueue* LinkedQueue_construct(void*);
+extern void LinkedQueue_destruct(LinkedQueue*);
 
 #endif
