@@ -1,7 +1,7 @@
 EXECPATH = bin
 OBJPATH = obj
 INCLUDEPATH = lib/include
-SRCPATH = Observer State Singleton Adapter Decorator Strategy Iterator Command Composite FactoryMethod  AbstractFactory TemplateMethod Proxy Facade Bridge Prototype Builder Memento
+SRCPATH = Observer State Singleton Adapter Decorator Strategy Iterator Command Composite FactoryMethod  AbstractFactory TemplateMethod Proxy Facade Bridge Prototype Builder Memento ChainOfResponsibility
 CC = gcc
 
 all:
