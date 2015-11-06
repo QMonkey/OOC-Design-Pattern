@@ -5,7 +5,7 @@ typedef struct _IClone IClone;
 
 struct _IClone
 {
-	IClone *(*clone)(IClone *);
+	IClone* (*clone)(IClone*);
 };
 
 #endif

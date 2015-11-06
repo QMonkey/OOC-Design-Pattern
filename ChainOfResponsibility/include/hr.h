@@ -14,7 +14,7 @@ struct _HR
 	};
 };
 
-extern HR *HR_construct(void *);
-extern void HR_destruct(HR *);
+extern HR* HR_construct(void*);
+extern void HR_destruct(HR*);
 
 #endif

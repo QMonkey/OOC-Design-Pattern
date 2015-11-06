@@ -14,7 +14,7 @@ struct _ProjectManager
 	};
 };
 
-extern ProjectManager *ProjectManager_construct(void *);
-extern void ProjectManager_destruct(ProjectManager *);
+extern ProjectManager* ProjectManager_construct(void*);
+extern void ProjectManager_destruct(ProjectManager*);
 
 #endif

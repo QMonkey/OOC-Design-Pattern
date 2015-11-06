@@ -7,13 +7,13 @@
 
 int main()
 {
-	Calculator *calculator = new (Calculator);
-	CalculatorMementoManager *calculatorMementoManager = new (CalculatorMementoManager);
+	Calculator* calculator = new (Calculator);
+	CalculatorMementoManager* calculatorMementoManager = new (CalculatorMementoManager);
 
 	calculator->add(calculator, 10, 11);
 	printf("Result:\t%d\n", calculator->getResult(calculator));
 
-	IMemento *imemento = calculator->createMemento(calculator);
+	IMemento* imemento = calculator->createMemento(calculator);
 	calculatorMementoManager->setMemento(calculatorMementoManager, imemento);
 
 	calculator->minus(calculator, 11, 10);

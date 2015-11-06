@@ -7,9 +7,9 @@ typedef struct _AbstractManager AbstractManager;
 
 struct _AbstractManager
 {
-	IManager *nextManager;
+	IManager* nextManager;
 
-	void (*setManager)(AbstractManager *, IManager *);
+	void (*setManager)(AbstractManager*, IManager*);
 	union
 	{
 		IManager;
@@ -17,7 +17,7 @@ struct _AbstractManager
 	};
 };
 
-extern void AbstractManager_construct(void *);
-extern void AbstractManager_destruct(AbstractManager *);
+extern void AbstractManager_construct(void*);
+extern void AbstractManager_destruct(AbstractManager*);
 
 #endif

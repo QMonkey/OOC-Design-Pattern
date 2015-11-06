@@ -14,7 +14,7 @@ struct _Boss
 	};
 };
 
-extern Boss *Boss_construct(void *);
-extern void Boss_destruct(Boss *);
+extern Boss* Boss_construct(void*);
+extern void Boss_destruct(Boss*);
 
 #endif

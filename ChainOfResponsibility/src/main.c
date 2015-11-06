@@ -7,9 +7,9 @@
 
 int main()
 {
-	ProjectManager *pm = new (ProjectManager);
-	HR *hr = new (HR);
-	Boss *boss = new (Boss);
+	ProjectManager* pm = new (ProjectManager);
+	HR* hr = new (HR);
+	Boss* boss = new (Boss);
 
 	pm->setManager(&pm->abstractManager, &hr->imanager);
 	hr->setManager(&hr->abstractManager, &boss->imanager);

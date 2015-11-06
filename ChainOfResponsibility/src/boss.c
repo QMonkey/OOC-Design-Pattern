@@ -5,17 +5,17 @@
 #include "abstract_manager.h"
 #include "boss.h"
 
-static int Boss_handleAskForLeaveRequest(IManager *, char *, int);
-static int Boss_handleRaisesRequest(IManager *, char *, int);
+static int Boss_handleAskForLeaveRequest(IManager*, char*, int);
+static int Boss_handleRaisesRequest(IManager*, char*, int);
 
-Boss *Boss_construct(void *addr)
+Boss* Boss_construct(void* addr)
 {
 	if (addr == NULL)
 	{
 		return NULL;
 	}
 
-	Boss *boss = addr;
+	Boss* boss = addr;
 
 	AbstractManager_construct(&boss->abstractManager);
 	boss->handleAskForLeaveRequest = Boss_handleAskForLeaveRequest;
@@ -24,12 +24,12 @@ Boss *Boss_construct(void *addr)
 	return boss;
 }
 
-void Boss_destruct(Boss *boss)
+void Boss_destruct(Boss* boss)
 {
 	AbstractManager_destruct(&boss->abstractManager);
 }
 
-int Boss_handleAskForLeaveRequest(IManager *imanager, char *name, int days)
+int Boss_handleAskForLeaveRequest(IManager* imanager, char* name, int days)
 {
 	if (days < 30)
 	{
@@ -41,7 +41,7 @@ int Boss_handleAskForLeaveRequest(IManager *imanager, char *name, int days)
 	return 0;
 }
 
-int Boss_handleRaisesRequest(IManager *imanager, char *name, int money)
+int Boss_handleRaisesRequest(IManager* imanager, char* name, int money)
 {
 	if (money > 5000)
 	{

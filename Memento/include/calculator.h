@@ -10,11 +10,11 @@ struct _Calculator
 {
 	int result;
 
-	void (*add)(Calculator *, int, int);
-	void (*minus)(Calculator *, int, int);
-	int (*getResult)(Calculator *);
-	IMemento *(*createMemento)(Calculator *);
-	void (*setMemento)(Calculator *, IMemento *);
+	void (*add)(Calculator*, int, int);
+	void (*minus)(Calculator*, int, int);
+	int (*getResult)(Calculator*);
+	IMemento* (*createMemento)(Calculator*);
+	void (*setMemento)(Calculator*, IMemento*);
 	union
 	{
 		IClone;
@@ -22,7 +22,7 @@ struct _Calculator
 	};
 };
 
-extern Calculator *Calculator_construct(void *);
-extern void Calculator_destruct(Calculator *);
+extern Calculator* Calculator_construct(void*);
+extern void Calculator_destruct(Calculator*);
 
 #endif
